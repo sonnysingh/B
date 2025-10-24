@@ -1,0 +1,76 @@
+
+
+Z0Gr3i?KypJQ-l1NsE
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+You could try below for Non-Prod
+ 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+
+- ODS - Stand up - .5 hr
+- DAP Team Meeting & Showcase - 1 hr
+- DC Failover Prep - 1 hr
+
+
+- INC006797171 () - 1.5 hrs
+	- 
+- CHG000813443 ( Referrnce - CHG000808567 ) and https://jira.nz.thenational.com/browse/PGSD-4176 Created for INC006802929 
+	- Cancelled today as Anna confirmed on Teams Chat "I think you can cancel this change. The disk space has remained steady over the last month and we are migrating that server off there next weekend."
+
+
+- INC006591021 ( settbisqlp04:Drive J: has 1% space left) 
+From Compute: If you need disks larger than 2TB then you could request new disks partitioned as GPT and migrate the data between them.
+SETTBISQLP04 - O Drive is using MBR instead of GPT so cannot be expanded more than it's current size.
+SORBBISQLP04 - J and O Drive are both using MBR instead of GPT so cannot be expanded more than it's current size.
+
+
+- https://jira.nz.thenational.com/browse/DASD-2525
+Certification implemented successfully on the server.
+	- Done with Anna as SHe show via Octopus application.
+
+
+
+
+
+
+- 'P' account - 
+I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom
+Summary:  Request – IP Telephony – BNZIPTEL Portal Access Request for <user>
+Priority:  Low
+Reference Number:  INC000003999056
+
+
+
+
+***************		NOT On Call 	***********************
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+You could try below for Non-Prod
+ 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+
+- ODS - Stand up - .5 hr
+- DAP Team Meeting & Showcase - 1 hr
+- DC Failover Prep - 1 hr
+
+
+- https://jira.nz.thenational.com/browse/DASD-2009
+- I had a chat with Toni to discuss the access requirements for the upcoming database migration using AWS DMS tool. . Toni confirmed that a dedicated user account is required for each SQL server involved in the migration.
+
+I recommended that assigning the db_owner role on the source databases, along with the View Server State permissions at the instance level, should be sufficient to perform the migration successfully. Toni will follow up with the Postgres team to confirm if any additional permissions are required.
+
+
+
+
+
+
+- 'P' account - 
+I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom
+Summary:  Request – IP Telephony – BNZIPTEL Portal Access Request for <user>
+Priority:  Low
+Reference Number:  INC000003999056
+
+
+
+
+***************		NOT On Call 	***********************
+
+
+
+
+
+

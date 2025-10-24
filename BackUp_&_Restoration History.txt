@@ -1,0 +1,153 @@
+
+ --Get Backup History for required database
+SELECT TOP 100
+s.database_name,
+m.physical_device_name,
+CAST(CAST(s.backup_size / 1000000 AS INT) AS VARCHAR(14)) + ' ' + 'MB' AS bkSize,
+CAST(DATEDIFF(second, s.backup_start_date,
+s.backup_finish_date) AS VARCHAR(4)) + ' ' + 'Seconds' TimeTaken,
+s.backup_start_date,
+CAST(s.first_lsn AS VARCHAR(50)) AS first_lsn,
+CAST(s.last_lsn AS VARCHAR(50)) AS last_lsn,
+CASE s.[type] WHEN 'D' THEN 'Full'
+WHEN 'I' THEN 'Differential'
+WHEN 'L' THEN 'Transaction Log'
+END AS BackupType,
+s.server_name,
+s.recovery_model
+FROM msdb.dbo.backupset s
+INNER JOIN msdb.dbo.backupmediafamily m ON s.media_set_id = m.media_set_id
+WHERE s.database_name = DB_NAME() -- Remove this line for all the database
+ORDER BY backup_start_date DESC, backup_finish_date
+GO
+
+
+
+--------------------------------------------------------------------------------- 
+--Database Backups for all databases For Previous Week 
+--------------------------------------------------------------------------------- 
+SELECT 
+   CONVERT(CHAR(100), SERVERPROPERTY('Servername')) AS Server, 
+   msdb.dbo.backupset.database_name, 
+   msdb.dbo.backupset.backup_start_date, 
+   msdb.dbo.backupset.backup_finish_date, 
+   msdb.dbo.backupset.expiration_date, 
+   CASE msdb..backupset.type 
+      WHEN 'D' THEN 'Database' 
+      WHEN 'L' THEN 'Log' 
+      END AS backup_type, 
+   msdb.dbo.backupset.backup_size, 
+   msdb.dbo.backupmediafamily.logical_device_name, 
+   msdb.dbo.backupmediafamily.physical_device_name, 
+   msdb.dbo.backupset.name AS backupset_name, 
+   msdb.dbo.backupset.description 
+FROM 
+   msdb.dbo.backupmediafamily 
+   INNER JOIN msdb.dbo.backupset ON msdb.dbo.backupmediafamily.media_set_id = msdb.dbo.backupset.media_set_id 
+WHERE 
+   msdb.dbo.backupset.database_name='NEQ' AND msdb.dbo.backupset.type = 'D' AND (CONVERT(datetime, msdb.dbo.backupset.backup_start_date, 102) >= GETDATE() - 7) 
+ORDER BY 
+   msdb.dbo.backupset.database_name, 
+   msdb.dbo.backupset.backup_finish_date;
+
+
+------------------------------------------------------------------------------------------- 
+--Most Recent Database Backup for Each Database - Detailed 
+------------------------------------------------------------------------------------------- 
+SELECT  
+   A.[Server],  
+   A.last_db_backup_date,  
+   B.backup_start_date,
+   B.backup_finish_date,
+   B.expiration_date, 
+   B.backup_size,  
+   B.logical_device_name,  
+   B.physical_device_name,   
+   B.backupset_name, 
+   B.description 
+FROM 
+   ( 
+   SELECT   
+      CONVERT(CHAR(100), SERVERPROPERTY('Servername')) AS Server, 
+      msdb.dbo.backupset.database_name,  
+      MAX(msdb.dbo.backupset.backup_finish_date) AS last_db_backup_date 
+   FROM 
+      msdb.dbo.backupmediafamily  
+      INNER JOIN msdb.dbo.backupset ON msdb.dbo.backupmediafamily.media_set_id = msdb.dbo.backupset.media_set_id  
+   WHERE 
+      msdb.dbo.backupset.type = 'D' 
+   GROUP BY 
+      msdb.dbo.backupset.database_name  
+   ) AS A 
+   LEFT JOIN  
+   ( 
+   SELECT   
+      CONVERT(CHAR(100), SERVERPROPERTY('Servername')) AS Server, 
+      msdb.dbo.backupset.database_name,  
+      msdb.dbo.backupset.backup_start_date,  
+      msdb.dbo.backupset.backup_finish_date, 
+      msdb.dbo.backupset.expiration_date, 
+      msdb.dbo.backupset.backup_size,  
+      msdb.dbo.backupmediafamily.logical_device_name,  
+      msdb.dbo.backupmediafamily.physical_device_name,   
+      msdb.dbo.backupset.name AS backupset_name, 
+      msdb.dbo.backupset.description 
+   FROM 
+      msdb.dbo.backupmediafamily  
+      INNER JOIN msdb.dbo.backupset ON msdb.dbo.backupmediafamily.media_set_id = msdb.dbo.backupset.media_set_id  
+   WHERE 
+      msdb.dbo.backupset.type = 'D' 
+   ) AS B 
+   ON A.[Server] = B.[Server] AND A.[database_name] = B.[database_name] AND A.[last_db_backup_date] = B.[backup_finish_date] 
+ORDER BY  
+   A.database_name;
+
+
+
+
+
+
+
+
+=========================================	 RESTORATIon History
+
+SELECT
+  backupset.[name]
+, backupset.[description]
+, [type]
+, expiration_date
+, is_compressed
+, backupmediafamily.device_type
+, [user_name]
+, server_name
+, [database_name]
+, is_copy_only
+, backup_start_date
+, backup_finish_date
+, backup_size
+, compressed_backup_size
+, physical_device_name
+, [backup_set_id]
+, backupset.media_set_id
+FROM msdb.dbo.backupset
+  INNER JOIN msdb.dbo.backupmediaset ON backupset.media_set_id = backupmediaset.media_set_id
+  INNER JOIN msdb.dbo.backupmediafamily ON backupset.media_set_id = backupmediafamily.media_set_id
+WHERE database_name = 'NEQ';
+
+
+
+--SELECT 
+--   [rs].[destination_database_name], 
+--   [rs].[restore_date], 
+--   [bs].[backup_start_date], 
+--   [bs].[backup_finish_date], 
+--   [bs].[database_name] as [source_database_name], 
+--   [bmf].[physical_device_name] as [backup_file_used_for_restore]
+--FROM msdb..restorehistory rs
+--INNER JOIN msdb..backupset bs ON [rs].[backup_set_id] = [bs].[backup_set_id]
+--INNER JOIN msdb..backupmediafamily bmf ON [bs].[media_set_id] = [bmf].[media_set_id] 
+--ORDER BY [rs].[restore_date] DESC
+
+
+
+

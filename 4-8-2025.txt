@@ -1,0 +1,91 @@
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+You could try below for Non-Prod
+ 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+|_
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+
+- ODS - Stand up - .5 hr
+
+
+- https://jira.nz.thenational.com/browse/DASD-2657
+	- As discussed we need a full backup of SAP ECC Non prod SQL Database server swmdchumsql04/10.150.13.58
+	- Madhuri Devgan - I have reviewed the request. I believe database name is 'NEQ' as it is the only one exist on the server ?
+		 can you confirm the destination folder where you want me to move the full backup file ?
+
+- https://jira.nz.thenational.com/browse/DASD-2651
+	- As credit card information is stored in our APEX database DBAPP-APEX(DBLST-APEX-PROD), we are wanting to understand who may
+	 access this data so we can verify whether the PAN data is being exposed. We have been told that the DBAs may be able to help 
+	provide a list of who connects to the database.  Is that correct? If so, can you please let me know how I can go about 
+	getting this information from you?
+
+
+- INC006802929 ( settdmsqlp29:Drive D: has 8% space left ) - 1.5 hrs
+	- 'D' drive is hosting data files mdf/ndf of databases that participating in Log shipping. Primary SQL server is "SORBDMSQLP09" 
+	and secondary "settdmsqlp29" which limits the possibility of shrink or move files. Space consumption is expected to increase due to 
+	ongoing business data growth. Minimum expectation calculation for 20% free space for stable SQL server operations and to prevent 
+	database growth failures.
+	20% * 2.69 TB (total drive size) = 538 GB (approx.)
+	Current free space = 217 GB
+	Deficit = 538 - 217 = 321 GB
+	So to reach 20% free space, need at least +321 GB to expand.
+	If want to allow growth I'd suggest to expand the drive with 500 GB.
+	Feel free to ask if any questions.
+
+
+- INC006797171 () - 1.5 hrs
+	- 
+
+
+
+
+
+
+
+
+
+
+
+
+- 'P' account - 
+I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom
+Summary:  Request – IP Telephony – BNZIPTEL Portal Access Request for <user>
+Priority:  Low
+Reference Number:  INC000003999056
+
+
+
+
+***************		NOT On Call 	***********************
+
+
+
+
+
+
