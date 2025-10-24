@@ -1,0 +1,9 @@
+
+- MS SQL DBA team meetup
+- ODS - Stand up
+
+- https://jira.nz.thenational.com/browse/DASD-2076 (Re: CDM upgrade data sources)
+Eddie confirmed to close it
+
+- 
+

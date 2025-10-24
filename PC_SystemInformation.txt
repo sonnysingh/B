@@ -1,0 +1,50 @@
+C:\Users\787626>systeminfo
+
+Host Name:                 CPC-Swarn-AWOMP
+OS Name:                   Microsoft Windows 10 Enterprise
+OS Version:                10.0.19045 N/A Build 19045
+OS Manufacturer:           Microsoft Corporation
+OS Configuration:          Standalone Workstation
+OS Build Type:             Multiprocessor Free
+Registered Owner:          N/A
+Registered Organization:   N/A
+Product ID:                00329-00000-00003-AA498
+Original Install Date:     5/22/2025, 6:48:51 AM
+System Boot Time:          5/26/2025, 6:19:31 PM
+System Manufacturer:       Microsoft Corporation
+System Model:              Virtual Machine
+System Type:               x64-based PC
+Processor(s):              1 Processor(s) Installed.
+                           [01]: AMD64 Family 25 Model 1 Stepping 1 AuthenticAMD ~2445 Mhz
+BIOS Version:              Microsoft Corporation Hyper-V UEFI Release v4.1, 8/23/2024
+Windows Directory:         C:\Windows
+System Directory:          C:\Windows\system32
+Boot Device:               \Device\HarddiskVolume3
+System Locale:             en-us;English (United States)
+Input Locale:              en-us;English (United States)
+Time Zone:                 (UTC+10:00) Canberra, Melbourne, Sydney
+Total Physical Memory:     16,333 MB
+Available Physical Memory: 7,998 MB
+Virtual Memory: Max Size:  18,765 MB
+Virtual Memory: Available: 8,832 MB
+Virtual Memory: In Use:    9,933 MB
+Page File Location(s):     C:\pagefile.sys
+Domain:                    WORKGROUP
+Logon Server:              \\CPC-Swarn-AWOMP
+Hotfix(s):                 7 Hotfix(s) Installed.
+                           [01]: KB5054977
+                           [02]: KB5015684
+                           [03]: KB5058379
+                           [04]: KB5014032
+                           [05]: KB5028380
+                           [06]: KB5054682
+                           [07]: KB5058526
+Network Card(s):           1 NIC(s) Installed.
+                           [01]: Microsoft Hyper-V Network Adapter
+                                 Connection Name: Ethernet
+                                 DHCP Enabled:    Yes
+                                 DHCP Server:     168.63.129.16
+                                 IP address(es)
+                                 [01]: 10.1.2.99
+                                 [02]: fe80::5c9d:f3d2:9217:25a1
+Hyper-V Requirements:      A hypervisor has been detected. Features required for Hyper-V will not be displayed.

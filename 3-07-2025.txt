@@ -1,0 +1,38 @@
+
+- MS SQL DBA team meetup
+- ODS - Stand up
+- DAP Team Meeting & Showcase
+- Survey of Simplification
+
+
+On call number (04) 924 9350
+
+- https://jira.nz.thenational.com/browse/DASD-2434 
+	- ODM DB sheet completed | Upload the files on ManageAccess Folder - ODM_DB
+	- DEALZ DB sheet completed |  Upload the files on ManageAccess Folder - DEALZ_DB
+	- discuss with Sooraj regarding access to Manage Access folder and access provided by him.
+
+
+Swarn Singh:
+SETTDMSQL28 is SQL AG(Availability Group) Secondary hence request#1 result same as Primary SORBDMSQLP08. 
+Note: It is not possible to run any queries on secondary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

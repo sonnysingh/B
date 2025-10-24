@@ -1,0 +1,16 @@
+https://jira.nz.thenational.com/secure/PortFolioPlanView.jspa?id=1450&sid=1552&vid=5604#plan/backlog
+
+Just a quick and rough peep Estimation migration time depend on following areas:-
+
+Database Size – Impacts backup/restore or file copy duration.
+Network Bandwidth & Latency – Critical for remote or cloud migrations; slower links prolong transfers.
+Storage Speed – Source and target disk I/O affects all migration tasks.
+Migration Method – Different approaches (backup/restore, detach/attach, log shipping, etc.) vary in complexity and speed.
+Server Configuration – Includes memory settings, tempdb setup, MAXDOP, and installing required features.
+Security & Access Setup – Copying logins and ensuring correct permissions avoid user issues.
+Application Cutover – Time needed to update connection strings, DNS, or client endpoints.
+Post‑Migration Validation – Testing data integrity, performance, and job schedules.
+Rollback Planning – Buffer time in case of failure and need to revert.
+Version/Edition Compatibility – Ensures no feature gaps or collate differences to fix.
+
+

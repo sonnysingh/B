@@ -1,0 +1,190 @@
+
+
+### 🔹 1. General Information
+
+* What is the proposed name of the database?
+
+* What is the purpose of the database (confirm it's for ETL/data transformation for Global Learning)?
+
+* Is this database strictly for non-production use?
+
+---
+
+### 🔹 2. Data Details
+
+* What type of data will be uploaded (e.g. HR, employee learning, PII)?
+
+* Will the data include any personally identifiable information (PII) or sensitive data?
+
+* How often will data be uploaded or transformed?
+
+* What is the estimated initial data size, and what is the expected growth over time?
+
+---
+
+### 🔹 3. Access Requirements
+
+* Who needs access to the database?
+
+  * Please provide full names or AD groups.
+
+* What type of access is required for each user (e.g. read, write, admin)?
+
+* Will you connect using SQL authentication or Windows authentication (Active Directory)?
+
+---
+
+### 🔹 4. Connectivity & Usage
+
+* How will you connect to the database (e.g. SSMS, Excel, Power BI)?
+
+* What client tools or ETL platforms will you use?
+
+* Will this require access from external systems, or just BNZ internal?
+
+---
+
+### 🔹 5. Infrastructure Preferences
+
+* Do you have a preference for the SQL Server version (e.g. 2019, 2022)?
+
+* Any specific performance or configuration needs?
+
+* Are there any firewall or IP address restrictions we need to account for?
+
+---
+
+### 🔹 6. Backup & Retention
+
+* What is your backup frequency requirement (e.g. daily, weekly)?
+
+* Do you need point-in-time recovery?
+
+* Do you need the database to be retained for only one year and deleted after?
+
+---
+
+### 🔹 7. Compliance & Governance
+
+* Has this request been approved by BNZ InfoSec or the appropriate governance team?
+
+  * If yes, please provide approval reference or contact person.
+
+* Do you require audit logging (e.g. changes to data, uploads, access)?
+
+* Are there any reporting or alerting needs?
+
+---
+
+### 🔹 8. Contact & Support
+
+* Who will be the primary contact for this database?
+
+* Do you have a secondary or backup contact?
+
+* Is there a timeline or deadline by which you need this database set up?
+
+
+
+
+
+
+
+
+
+
+To assist the requester in setting up a new SQL Server database for their ETL transformations in a BNZ-approved non-prod environment, you will need to gather some specific technical and compliance-related details. Here's a checklist of required information you should request:
+
+---
+
+### ✅ Database Setup Requirements
+
+1. Database Name:
+
+   Preferred name for the database (e.g., `Momentum_ETL_Transform`).
+
+2. SQL Server Version Preference:
+
+   Specify if any particular version (e.g., SQL Server 2019/2022) is required.
+
+3. Environment Details:
+
+   Confirm this is strictly for non-prod use, as they mentioned.
+
+4. Size Estimate:
+
+   Approximate data volume (initial and projected growth) to allocate adequate storage.
+
+5. Retention Period:
+
+   They mentioned one year. Confirm if auto-archival or deletion is expected after that.
+
+6. Authentication Type:
+
+   * SQL Authentication or Windows Authentication?
+
+   * List of users who need access (AD groups or individual accounts).
+
+---
+
+### ✅ Access & Security
+
+7. Data Sensitivity Classification:
+
+   Even for non-prod, confirm whether data contains PII/sensitive information.
+
+8. Network Access Requirements:
+
+   * Will access be from BNZ’s internal network only?
+
+   * Is VPN access needed?
+
+9. Firewall Rules / Whitelisting:
+
+   IP addresses or ranges that need access to the database.
+
+---
+
+### ✅ Usage & Integration
+
+10. ETL Tool / Client Access Details:
+
+* How will the user connect? (e.g., SSMS, Python scripts, Power BI, Azure Data Factory)
+
+* Will Excel still be used for uploads/downloads?
+
+11. Backup & Recovery Needs:
+
+* Is daily backup sufficient?
+
+* Do they need point-in-time recovery?
+
+12. Logging and Auditing Requirements:
+
+* Should audit trails of manual uploads or transformations be maintained?
+
+---
+
+### ✅ Governance & Approvals
+
+13. BNZ Compliance Approval:
+
+* Has the use of this environment been formally approved by BNZ InfoSec/IT?
+
+* Any reference ticket or name of approver?
+
+14. Requester Contact Details:
+
+* Name, department, email, and project role (they mentioned they're in the "global data squad").
+
+15. Decommissioning Plan:
+
+* What happens after one year?
+
+* Should the database be auto-deleted or archived?
+
+---
+
+If you like, I can prepare a template form/email to send to the requester for gathering this info. Just let me know.
+
+ 

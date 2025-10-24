@@ -1,0 +1,54 @@
+rYdUH4j)?f1zo5ne8=
+
+- MS SQL DBA team meetup
+- ODS - Stand up
+
+
+- https://jira.nz.thenational.com/browse/DASD-2450 
+	CTASK2495417 - run attached scripts to setup new logins
+
+- https://jira.nz.thenational.com/browse/DASD-2438
+	- Change task CTASK2493284 ( run attached SQL )
+
+- https://jira.nz.thenational.com/browse/DASD-2434
+	
+
+
+EXEC @ReturnCode = msdb.dbo.sp_send_dbmail
+	@profile_name='dbasupport',
+	@execute_query_database='ADM',
+	@recipients = 'jasmine_selak@bnz.co.nz;daniel_park@bnz.co.nz;nick_potts@bnz.co.nz',
+	@query = @ReportQuery,
+	@attach_query_result_as_file=1,
+	@query_attachment_filename=@attachmentname,
+	@query_result_no_padding=1,
+	@query_result_separator=@tab,
+	@query_result_width=32767,
+	@from_Address = 'ADM-DoNotReply@bnz.co.nz',
+	@subject = 'ADM - Weekly Merchant Report',
+	@body = 'The Merchant report for the prevous week is attached.';
+
+
+## CheckIfPrimary
+IF [master].sys.fn_hadr_is_primary_replica ('ADM') != 1
+RAISERROR('Not the PRIMARY server for this job, exiting with SUCCESS' ,11,1)
+
+
+On call number (04) 924 9350 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

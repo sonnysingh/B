@@ -1,0 +1,14 @@
+- MS SQL DBA team meetup
+- ODS - Stand up
+
+- INC006680178 - sorbbisqlp06:Drive P: has 5% space left
+discussed with Anna and then Erica as Erica working on BI project.
+She took the INC and closed it with commets "Trying to get this server decommissioned, cleaned up old backups. But a bit of a dumping ground until final testing done."
+- Controls - Capacity
+
+- INC006680169 - sorbbisqlp05:Drive D: has 10% space left
+All databases on offline. drive jave data and Log files of 212 GB (total 239 GB)
+Suresh Pataneni asked to add "Suresh Pataneni (owner) confirmed "Servers are planned for decommission after Finance month end completed( 2nd week of July)" after discussion over MS Teams
+
+"Contact @Suresh Pataneni and discuss the capacity issue. He confirmed to add "Servers are planned for decommission after Finance month end completed( 2nd week of July)" and close the INC."
+

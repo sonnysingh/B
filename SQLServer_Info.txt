@@ -1,0 +1,45 @@
+-- SQL Server Version and Edition and Physical/Logical cores INfo
+
+SELECT
+    SERVERPROPERTY('MachineName') AS [Machine Name],
+    SERVERPROPERTY('ServerName') AS [Server Name],
+    SERVERPROPERTY('InstanceName') AS [Instance Name],
+    SERVERPROPERTY('Edition') AS [Edition],
+    SERVERPROPERTY('ProductVersion') AS [Product Version],
+    CASE 
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '8' THEN 'SQL Server 2000'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '9' THEN 'SQL Server 2005'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '10' THEN 'SQL Server 2008 / 2008 R2'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '11' THEN 'SQL Server 2012'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '12' THEN 'SQL Server 2014'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '13' THEN 'SQL Server 2016'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '14' THEN 'SQL Server 2017'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '15' THEN 'SQL Server 2019'
+        WHEN LEFT(CONVERT(varchar, SERVERPROPERTY('ProductVersion')), CHARINDEX('.', CONVERT(varchar, SERVERPROPERTY('ProductVersion'))) - 1) = '16' THEN 'SQL Server 2022'
+        ELSE 'Unknown Version'
+    END AS [SQL Version Name],
+    SERVERPROPERTY('ProductLevel') AS [Product Level],
+    SERVERPROPERTY('EngineEdition') AS [Engine Edition Code],
+    CASE SERVERPROPERTY('EngineEdition')
+        WHEN 1 THEN 'Personal/Desktop'
+        WHEN 2 THEN 'Standard'
+        WHEN 3 THEN 'Enterprise'
+            /*WHEN 3 THEN 
+            CASE 
+                WHEN CAST(SERVERPROPERTY('Edition') AS VARCHAR(100)) LIKE '%Developer%' THEN 'Developer'
+                WHEN CAST(SERVERPROPERTY('Edition') AS VARCHAR(100)) LIKE '%Web%' THEN 'Web'
+                ELSE 'Enterprise'
+            END*/
+        WHEN 4 THEN 'Express'
+        WHEN 5 THEN 'SQL Azure'
+        WHEN 6 THEN 'Azure Managed Instance'
+        WHEN 8 THEN 'Azure Synapse'
+        ELSE 'Unknown'
+    END AS [Engine Edition Name],
+    -- SERVERPROPERTY('LicenseType') AS [License Type],
+    -- SERVERPROPERTY('NumLicenses') AS [Number of Licenses],
+    cpu_count AS [Total Logical Cores],
+    hyperthread_ratio AS [Hyperthread Ratio],
+    cpu_count / hyperthread_ratio AS [Total Physical Cores]
+FROM sys.dm_os_sys_info;
+

@@ -1,0 +1,42 @@
+
+- MS SQL DBA team meetup
+- ODS - Stand up
+- DAP Team Meeting & Showcase
+
+On call number (04) 924 9350
+
+- https://jira.nz.thenational.com/browse/DASD-2434 
+	- ODM DB sheet completed | waiting for access to upload the evidences
+
+
+EXEC @ReturnCode = msdb.dbo.sp_send_dbmail
+	@profile_name='dbasupport',
+	@execute_query_database='ADM',
+	@recipients = 'BNZ_MerchantDT@bnz.co.nz;Umesh_Gandhi@bnz.co.nz;Katrina_McAfee@bnz.co.nz',
+	@query = @ReportQuery,
+	@attach_query_result_as_file=1,
+	@query_attachment_filename=@attachmentname,
+	@query_result_no_padding=1,
+	@query_result_separator=@tab,
+	@query_result_width=32767,
+	@from_Address = 'ADM-DoNotReply@bnz.co.nz',
+	@subject = 'ADM - Weekly Merchant Report',
+	@body = 'The Merchant report for the prevous week is attached.';
+ldepMX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+/*
+Monthly Backup Report - Trending Database Growth from Backups
+What This Adds:
+[Previous Month Size MB] – size from the previous month
+[Growth MB] – difference in MB
+[Growth %] – percentage growth from the previous month
+What We’ll Add to Your Monthly Backup Report:
+Metric  Description
+Backup Duration Time taken for each full backup (in minutes)
+Success/Failure   Status of each backup (successful = 1, failed = 0)
+Storage Usage      Optional: Disk free space at backup time (requires additional logging)
+*/
+
+WITH BackupStats AS (
+    SELECT
+        bs.[database_name] AS [Database],
+        DATEPART(YEAR, bs.[backup_start_date]) AS [Year],
+        DATEPART(MONTH, bs.[backup_start_date]) AS [Month],
+        CAST(AVG(bs.[backup_size]) / 1024.0 / 1024 AS DECIMAL(10,2)) AS [Backup Size MB],
+        CAST(AVG(bs.[compressed_backup_size]) / 1024.0 / 1024 AS DECIMAL(10,2)) AS [Compressed Backup Size MB],
+        CAST(AVG(DATEDIFF(SECOND, bs.backup_start_date, bs.backup_finish_date)) / 60.0 AS DECIMAL(10,2)) AS [Avg Backup Duration Min],
+        SUM(CASE WHEN bs.backup_finish_date IS NOT NULL THEN 1 ELSE 0 END) AS [Success/Failure Backups],
+        COUNT(*) AS [Total Backups],
+        CAST(AVG(bs.backup_size * 1.0 / NULLIF(bs.compressed_backup_size, 0)) AS DECIMAL(10,2)) AS [Compression Ratio]
+    FROM msdb.dbo.backupset bs
+    WHERE bs.[type] = 'D' -- Full backups
+    GROUP BY bs.[database_name], DATEPART(YEAR, bs.backup_start_date), DATEPART(MONTH, bs.backup_start_date)
+),
+GrowthCalc AS (
+    SELECT *,
+        LAG([Backup Size MB]) OVER (PARTITION BY [Database] ORDER BY [Year], [Month]) AS [Previous Month Size MB],
+        FIRST_VALUE([Backup Size MB]) OVER (PARTITION BY [Database] ORDER BY [Year], [Month]) AS [First Month Size MB]
+    FROM BackupStats
+)
+SELECT
+    [Database],
+    [Year],
+    [Month],
+    [Backup Size MB],
+    [Previous Month Size MB],
+    CAST([Backup Size MB] - [Previous Month Size MB] AS DECIMAL(10,2)) AS [Growth MB],
+    CAST(
+        CASE
+            WHEN [Previous Month Size MB] IS NULL OR [Previous Month Size MB] = 0 THEN NULL
+            ELSE (([Backup Size MB] - [Previous Month Size MB]) * 100.0) / [Previous Month Size MB]
+        END
+    AS DECIMAL(10,2)) AS [Growth %],
+    CAST([Backup Size MB] - [First Month Size MB] AS DECIMAL(10,2)) AS [Cumulative Months Growth MB],
+    [Compressed Backup Size MB],
+    [Compression Ratio],
+    [Avg Backup Duration Min],
+    [Success/Failure Backups],
+    [Total Backups],
+    CAST(([Success/Failure Backups] * 100.0) / NULLIF([Total Backups], 0) AS DECIMAL(5,2)) AS [Success Backups %]
+FROM GrowthCalc
+ORDER BY [Database], [Year], [Month];
