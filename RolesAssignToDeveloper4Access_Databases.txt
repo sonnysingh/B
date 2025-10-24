@@ -1,0 +1,87 @@
+ /*
+Copy and paste this output into a .sql file or SSMS query window (with SQLCMD Mode on).
+Let me know if you'd like: A version that writes to files automatically
+PowerShell integration. Output filtered to only selected databases
+*/
+
+DECLARE @DBName SYSNAME;
+--DECLARE @ServerName SYSNAME = REPLACE(@@SERVERNAME, '\', '_'); -- REPLACE BACKSLASH FOR FILE SYSTEM COMPATABILITY;
+DECLARE @MachineName SYSNAME = CAST(SERVERPROPERTY('MachineName') AS SYSNAME); -- REPLACE BACKSLASH FOR FILE SYSTEM COMPATABILITY;
+DECLARE @DestFolder NVARCHAR(255) = N'D:\DBA\Audit\BIWFCH\';
+
+CREATE TABLE #ScriptLines (ScriptLine NVARCHAR(MAX));
+
+DECLARE db_cursor CURSOR FOR
+SELECT name FROM sys.databases
+WHERE state_desc = 'ONLINE' AND name NOT IN ('tempdb');
+
+OPEN db_cursor;
+FETCH NEXT FROM db_cursor INTO @DBName;
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    INSERT INTO #ScriptLines (ScriptLine)
+    VALUES
+    (':OUT ' + @DestFolder + @MachineName + '_' +@DBName + '_#1.txt'),
+    ('PRINT ''USE ' + @DBName + ''''),
+    ('USE [' + @DBName + ']'),
+    ('GO'),
+	-- Databases Roles
+    ('PRINT ''sp_helprolemember ''''db_securityadmin'''''''),
+    ('EXEC sp_helprolemember ''db_securityadmin'''),
+    ('GO'),
+    ('PRINT ''sp_helprolemember ''''db_owner'''''''),
+    ('EXEC sp_helprolemember ''db_owner'''),
+    ('GO'),
+    ('PRINT ''sp_helprolemember ''''db_accessadmin'''''''),
+    ('EXEC sp_helprolemember ''db_accessadmin'''),
+    ('GO'),
+	-- Server roles
+    ('PRINT ''sp_helpsrvrolemember ''''sysadmin'''''''),
+    ('EXEC sp_helpsrvrolemember ''sysadmin'''),
+    ('GO'),
+    ('PRINT ''sp_helpsrvrolemember ''''serveradmin'''''''),
+    ('EXEC sp_helpsrvrolemember ''serveradmin'''),
+    ('GO'),
+    ('PRINT ''sp_helpsrvrolemember ''''securityadmin'''''''),
+    ('EXEC sp_helpsrvrolemember ''securityadmin'''),
+    ('GO'),
+	-- Database Users
+	('PRINT ''sp_helpuser'''),
+    ('EXEC sp_helpuser'),
+    ('GO'),
+	-- Permissions
+	('PRINT ''sp_helprotect'''),
+    ('EXEC sp_helpuser'),
+    ('GO'),
+	-- End of script section
+    (':OUT stdout'),
+    ('');  -- blank line for separation
+
+    FETCH NEXT FROM db_cursor INTO @DBName;
+END
+
+CLOSE db_cursor;
+DEALLOCATE db_cursor;
+
+-- Output script line-by-line
+SELECT ScriptLine FROM #ScriptLines;
+
+DROP TABLE #ScriptLines;
+
+
+
+/*
+STEP 3: Run the query for listing the contained database using SQL Server Management Studio: 
+--SELECT name, containment, containment_desc, state_desc FROM sys.databases; 
+--If Contained Database exists with Containment_desc= PARTIAL and is the production database, 
+then run the Query below on the contained database: 
+sp_helprolemember 'db_securityadmin' sp_helprolemember 'db_owner' sp_helprolemember 'db_accessadmin'
+*/
+
+:OUT D:\DBA\Audit\BIWFCH\ContainedDB_#1.txt
+PRINT 'SELECT name, containment, containment_desc, state_desc FROM sys.databases'
+SELECT name, containment, containment_desc, state_desc FROM sys.databases;
+GO
+:OUT stdout
+

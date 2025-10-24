@@ -1,0 +1,32 @@
+-- SQL Database  Mail SENT History
+select @@SERVERNAME as 'ServerName', SERVERPROPERTY('MachineName') AS SQLServer, 
+last_mod_date as SentDateTime, 
+sent_status, 
+recipients, 
+subject, 
+body
+FROM msdb.dbo.sysmail_allitems
+WHERE subject like '%ADM - Weekly Merchant Report%'
+ORDER BY last_mod_date DESC;
+
+
+=================================================================
+-- Check Database Mail Failures (if any)
+select @@SERVERNAME as 'ServerName', SERVERPROPERTY('MachineName') AS SQLServer, 
+sel.mailitem_id, 
+sai.recipients,
+sai.subject,
+sai.body,
+sai.last_mod_date as FailureDateTime,
+sai.sent_status, 
+sai.recipients, 
+sel.description,
+sai.last_mod_user
+FROM msdb.dbo.sysmail_event_log sel
+JOIN msdb.dbo.sysmail_allitems sai
+ON sel.mailitem_id = sai.mailitem_id
+WHERE sel.event_type = 'error'
+ORDER BY sai.last_mod_date DESC;
+
+=====================================================================
+

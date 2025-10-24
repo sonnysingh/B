@@ -1,0 +1,63 @@
+
+y?u0w1GhO_26PBjl-I
+
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+- DAP Team Meeting & Showcase - 1 hr
+- Ansible patching proccess - .5 hr
+
+
+- 'P' account. I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom 
+
+- DASD-2201 (https://jira.nz.thenational.com/browse/DASD-2201) - SQL-New Database Request - 1.5 hrs
+	- Change CHG000803800 - ADM Customized Reporting ( CTASK2529444 - Run SQL to generate 3 x set of reports)
+		- Planned start date: 	16-07-2025 17:00:00 AEST | Planned end date: 	20-07-2025 15:00:00 AEST
+- discussion with ANT Fourie regarding job execution tonight. Only can be start at 7:30 pm duebto ETL job run for 1.5 hrs
+
+
+- DASD-2410 ( ADM - Reporting - remove email Dan Park from ADM Merchant Job) - 2 hrs
+	- Discussed with Dan Park as he informed he has received the email with report file.
+	- Discusswed with Umesh and Ant in groupm chat with Dan and someone called 'SAM' looking into it.
+	- Details shared with Erica and ask to look into it. text shared with her
+		DASD2410 - Dan_Park@bnz.co.nz) is not member of distribution list - "BNZ_MerchantDT@bnz.co.nz" which is part of ADM report job. ADM had looked at and confirmed. Dan's email is not part of job anymore as I have removed 
+		last week no both AG servers. Tested as well and DAN didn't receive the test email. Are you able to see at your end unless I am missing something. just wondering why old ADM merchant report job enabled ? can this be 
+		disabled ? as this will resolve the issue.
+
+
+
+
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		On Call Start Today First Week	2nd DAY 	***********************
+
+CHG000803800 (ADM Customized Reporting) - 1.5 hrs
+	- This change is to run a SQL query to generate CSV files that the MDH team will consume and generate required
+	   reporting. However, this change just involves running the SQL query and generating the CSV File.
+	- CTASK2529444 ( Run SQL to generate 3 x set of reports ) - Queries attached that need to be executed. 
+
+
+DASD-2201 - Check Job: Commander ETL Process to ensure 7:30 PM  
+

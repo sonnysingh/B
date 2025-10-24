@@ -1,0 +1,107 @@
+
+o5VYDgb_71wR%U|hcs
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+- Access request for SAUESTDBP01 ( That server is a staging server, so we copy prod data to it and run through an intensive decrypting process with the SAP team )
+
+
+- 'P' account. I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom 
+
+- DASD-2201 (https://jira.nz.thenational.com/browse/DASD-2201) - SQL-New Database Request
+Meeting with Ant Fourie and discussed following points.
+The job's actions and outcomes.
+Space availability on network folder where files will be exported by job execution
+Testing to ensure jobs working as expected and execution time ad 2 years data size.
+Schedule testing time tomorrow 16 July 7:30 PM (NZT)
+Ant will create a change for the whole activities.
+
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		On Call Start Today First Week	***********************
+
+- INC006759562 P3 (urgency P2) (sorbbisqlp04:Drive T: has 0% space left ) - 1 hrs
+- invetsigation further | sorbbisqlp04 (Finhub Db & SSAS (SWXPBISSAS03:23831 / BITabularProd:23831 )
+- The T:\ drive (TempDB) consistently reaches critical usage (100%), seems BI application activites. 
+	- verified disk usage on T:\ and confimrd that TempDB files were consuming most vof spce.
+- checked for any long running sessions/transactions or queries consuming excessive TempDb
+	- no significan blocking or runaway sessions were found at the time.
+	- observed "writable page" messages across TempDB data files indicatinf contention or pressure.
+Action Taken: 
+Shrink operation on all TempDB data files and then Log file resizing them equal and balanced sizes. This operation successfully reclained space and alleviated contention.  Drive hosting datafiles of 'Finhub' database. Contact BI team (Blair and then Suresh ) to discuss the issue. Team confirmed "Datafiles on the M drive should not be expanding as database using new datafiles on other drive ". On the other hand migration of this BI server in progress.  Additionally assessment has been conducted to explore the possibility of regain the space but no possibility found.
+
+Outcome:
+53 gb space free now as recovered on the T:\ drive. TempDb performance stabilized post-shrink. Disk usage is now within acceptable thresholds.
+
+
+
+
+
+DASD-2201 - Check Job: Commander ETL Process to ensure 7:30 m 2maro go to go 
+
+--DECLARE @Start_Of_Period datetime,  @End_Of_Period datetime 
+--SET @Start_Of_Period = dateadd(year,-2,getdate())	
+--SET @End_Of_Period = getdate()	
+
+--SELECT count (*) from AdjTran
+--WHERE AdjTran.ReasonType IN ('AD')
+--and AdjTran.QID NOT IN ('Cancelled','Skipped','Undone','Discard')
+--and AdjTran.sentts between @Start_Of_Period and @End_Of_Period
+---- 230463	
+
+--SELECT sum (RowCount) from AdjTran
+--WHERE AdjTran.ReasonType IN ('AD')
+--and AdjTran.QID NOT IN ('Cancelled','Skipped','Undone','Discard')
+--and AdjTran.sentts between @Start_Of_Period and @End_Of_Period
+-- 230463	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

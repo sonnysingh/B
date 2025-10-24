@@ -1,0 +1,41 @@
+
+d4Sn_8.Br3HTu(e5aG
+
+- MS SQL DBA team meetup
+	- discuss On CAll settings
+	- Go thru xMatters configuration by Eduard
+	- Go thru SQL server raoster Confluence Page
+	- Other details regarding On Call e.g. infrastructure/domain On Call contact details
+	- Past incidents but nothing as mentioned by Eduard
+
+- ODS - Stand up
+
+
+On call number (04) 924 9350
+
+- https://jira.nz.thenational.com/browse/DASD-2434 
+	- BIWFCH sheet in progress
+
+SAP Databases:-
+SASESAPSMDBP01.azure.nz.thenational.com - 10.69.195.52 - SQL Server VM
+
+, auesapsmdbp01, sauesapsqlp01, auesapsqlp02, sauesapsqlp01, sasesapsqlp01, sasesapsqlp02, sauestdbp01.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

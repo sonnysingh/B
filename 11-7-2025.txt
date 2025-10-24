@@ -1,0 +1,87 @@
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+
+Azure - \\SAUEAZFSP01\bnz-tas-team
+
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+
+
+SAP DB - SQL SERVER 2019
+asesapsmdbp01 - SASESAPSMDBP01
+auesapsmdbp01 - SAUESAPSMDBP01
+sauesapsqlp01 - SAUESAPSQLP01
+auesapsqlp02 - SAUESAPSQLP02
+sasesapsqlp01 - SASESAPSQLP01 
+sasesapsqlp02 - SASESAPSQLP02
+sauestdbp01 - SAUESTDBP01.BNZNAG.NZ.THENATIONAL.com - SQL Server VM
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+- Access request for SAUESTDBP01 ( That server is a staging server, so we copy prod data to it and run through an intensive decrypting process with the SAP team )
+
+
+- INC006704746 (sorbbisqlp04:Drive M: has 2% space left) - 1.5 hrs
+- invetsigation further | sorbbisqlp04 (Finhub Db & SSAS (SWXPBISSAS03:23831 / BITabularProd:23831 )
+- Drive hosting datafiles of 'Finhub' database. Contact BI team (Blair and then Suresh ) to discuss the issue. Team confirmed "Datafiles on the M drive should not be expanding as database using new datafiles on other drive ". On the other hand migration of this BI server in progress.  Additionally assessment has been conducted to explore the possibility of regain the space but no possibility found.
+
+
+- INC006716815 ( settdmsqlq09:Drive L: has 5% space left ) - 2.5 hrs
+- Drive hosting database Log files. Assessment has conducted to see possibility of regain free space. Shrink the multiple log files and retain 120 GB space of 599GB.  
+
+- https://jira.nz.thenational.com/browse/DASD-2527 - can be closed as msg'd to David.
+- The issue has been resolved by Anna. "There was a dormant session found on the Octopus server that was taking up space in tempdb. The session was killed and normal operations resumed. The tempdb data files is capped, but we have extended the space they can take to prevent this from happening again, and further monitoring through Dynatrace will be investigated" 
+
+- https://jira.nz.thenational.com/browse/DASD-2434 - EY/BNZ FY25 IT Audit | OS/DB - Information Request List - AUDIT
+- 
+
+
+
+
+
+
+
+On call number (04) 924 9350
+
+- https://jira.nz.thenational.com/browse/DASD-2434 
+	- BIWFCH sheet in progress
+
+sp_helpuser
+sp_helprotect
+db_owner
+db_accessadmin
+db_securityadmin
+serveradmin
+sysadmin
+
+. This is typically obtained by executing the following:
+STEP 1: From the [START] menu open SQL Server Management Studio and click on [New Query] and select the [Results to File] icon or from the command line (click on [START] - [RUN] - type CMD in the ‘Open:’ text box) type sqlcmd -o 'filename' to launch the SQL Query utility outputting the results to the filename entered. 
+STEP 2: Run the following query from within the SQL Query window or sqlcmd utility: sp_helprolemember 'db_securityadmin' sp_helprolemember 'db_owner' sp_helprolemember 'db_accessadmin' sp_helpsrvrolemember 'sysadmin' sp_helpsrvrolemember '' sp_helpsrvrolemember 'securityadmin' 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

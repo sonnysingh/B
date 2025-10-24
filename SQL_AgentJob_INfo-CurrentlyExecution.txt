@@ -1,0 +1,50 @@
+SELECT
+    ja.job_id,
+    j.name AS job_name,
+    ja.start_execution_date,      
+    ISNULL(last_executed_step_id,0)+1 AS current_executed_step_id,
+    Js.step_name
+FROM msdb.dbo.sysjobactivity ja 
+LEFT JOIN msdb.dbo.sysjobhistory jh ON ja.job_history_id = jh.instance_id
+JOIN msdb.dbo.sysjobs j ON ja.job_id = j.job_id
+JOIN msdb.dbo.sysjobsteps js
+    ON ja.job_id = js.job_id
+    AND ISNULL(ja.last_executed_step_id,0)+1 = js.step_id
+WHERE
+  ja.session_id = (
+    SELECT TOP 1 session_id FROM msdb.dbo.syssessions ORDER BY agent_start_date DESC
+  )
+AND start_execution_date is not null
+AND stop_execution_date is null;
+
+
+=====================================================================
+-- Find Job with Specific Recipients or Name or Email etc
+SELECT s.step_id,s.step_name,
+       j.[name],
+       s.database_name,
+       s.command
+FROM   [sakldmsqlp05\MSSQL2014].msdb.dbo.sysjobsteps AS s
+INNER JOIN msdb.dbo.sysjobs AS j ON  s.job_id = j.job_id
+WHERE  s.command LIKE '%ADM - Weekly Merchant Report%' and j.enabled=1
+-- '%@recipients%'
+
+SELECT s.step_id,s.step_name,
+       j.[name],
+       s.database_name,
+       s.command
+FROM   [sakldmsqlp25\MSSQL2014].msdb.dbo.sysjobsteps AS s
+INNER JOIN msdb.dbo.sysjobs AS j ON  s.job_id = j.job_id
+WHERE  s.command LIKE '%Dan_Park@bnz.co.nz%' -- and j.enabled=1
+
+
+-- Who Chnage the Job last time
+SELECT name as JobNAme,
+SUSER_SNAME(owner_sid) AS JobOwner,
+date_created AS DateCreated,
+date_modified AS DateModified
+FROM msdb.dbo.sysjobs
+WHERE name='OLD - ADM - Weekly Merchant Report'
+
+
+==========================================================================

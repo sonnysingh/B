@@ -1,0 +1,83 @@
+
+jp2F5L,Qk6Igz?B0rM
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box as ws not able to access last
+	   night to complete Auditing Jira ticket DSAD-2434
+	- Discuss Change Task 
+
+
+- ODS - Stand up - .5 hr
+
+- DAP - Meeting - 1 hr
+
+- https://jira.nz.thenational.com/browse/DASD-2410 (ADM - Reporting) 
+	- Dan still recieve the email and asked in ODS group chat
+	- Invetsigation and review job's code and no trace of his email
+	- check on secondary (sakldmsqlp25\MSSQL2014) and found jiob still have his name listed in the database email code section.
+	- remove his email in job on AG Secondary server 
+	- Test 
+
+-- sakldmsqlp25\MSSQL2014
+Step 1 
+EXEC @ReturnCode = msdb.dbo.sp_send_dbmail
+	@profile_name='dbasupport',
+	@execute_query_database='ADM',
+	@recipients = 'jasmine_selak@bnz.co.nz;daniel_park@bnz.co.nz;nick_potts@bnz.co.nz',
+	@query = @ReportQuery,
+	@attach_query_result_as_file=1,6I
+	@query_attachment_filename=@attachmentname,
+	@query_result_no_padding=1,
+	@query_result_separator=@tab,
+	@query_result_width=32767,
+	@from_Address = 'ADM-DoNotReply@bnz.co.nz',
+	@subject = 'ADM - Weekly Merchant Report',
+	@body = 'The Merchant report for the prevous week is attached.';
+
+Step 3
+EXEC @ReturnCode = msdb.dbo.sp_send_dbmail
+	@profile_name='dbasupport',
+	@execute_query_database='ADM',
+	@recipients = 'bnzdt@bnz.co.nz;Umesh_Gandhi@bnz.co.nz;Katrina_McAfee@bnz.co.nz',
+	@query = @ReportQuery,
+	@attach_query_result_as_file=1,
+	@query_attachment_filename=@attachmentname,
+	@query_result_no_padding=1,
+	@query_result_separator=@tab,
+	@query_result_width=32767,
+	@from_Address = 'ADM-DoNotReply@bnz.co.nz',
+	@subject = 'ADM - Weekly Merchant Report',
+	@body = 'The Merchant report for the prevous week is attached.';
+
+
+
+
+
+
+
+
+On call number (04) 924 9350
+
+- https://jira.nz.thenational.com/browse/DASD-2434 
+	- BIWFCH sheet in progress
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
