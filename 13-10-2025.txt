@@ -1,0 +1,54 @@
+
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+
+- INC007055813 (Database - SQL Server SETTDMSQLD07  cannot be connected to) From [ Aseem Mohammed <Aseem_Mohammed@bnz.co.nz> ] 
+We are unable to connect to the Dev SQL database(DBAPP-CRS-DEV/SETTDMSQLD07) and because of this out IIR dev application is down which is blocking our testing, could you please help us so that we are unblocked.
+	- I tested the server and some databases specifically IIR database connectivity. Server and database connectivity is working without any issue. Could you please try and test the connectivity ? and let us know if any concern.
+	- Caused - I recall this is the same server that had connectivity issues a month or so ago - it was related to its dns record getting scavenged. - Paul Cotter***
+	- it has resolved the issue, but unfortunately it may occur again until the server is rebuilt.
+This is a known issue with server OS's that are upgraded in-place, especially from Windows 2012
+	
+- INC007050853 (SETTDMSQLD07 - Unable to connect - 'connection error, failed due to kerberos error') - resolved
+	- Requester Jeff Li comments "Thanks for the help. I could access it around an hour after the call. Although it was weird, access works fine now."
+
+
+

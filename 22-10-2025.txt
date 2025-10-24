@@ -1,0 +1,113 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Storage Audit
+This is for us to do a deep dive on the storage we need for all of the following:
+
+CLR Backup/Restores
+Backup/Restore Compliance
+New server builds (ORACLE and SQL)
+Veeam backups
+
+We need figures for all and an overall total and division for @Pascal De Reuck's team
+@Pascal De Reuck can you please forward to the relevant people in your team
+Cheers
+Dave
+
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+- Meeting - Storage Audit - 1.5 hrs
+
+- INC007071307 ( swvpabssql51:DYNATRACE [WARNING]: P-251030413 (BNZSQL) -warning:low_diskspace:D:\:SWVPABSSQL51.BNZNAG.NZ.THENATIONAL.com ) -  1.5 hrs
+	- Review and contact Paul Cotter for driv extension. 
+	- Raise with @Paul Cotter to extend the drive with 100 GB on both primary and secondary server. SQL Server is Cluster ABSSQLCLUP51. 
+		Primary - SWVPABSSQL51
+		Secondary - SWVPABSSQL52
+
+
+
+
+
+kZzeYGgbm5sBT05RUq
+
+
+
+use [BIW]
+GO
+GRANT INSERT ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_job_run] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT EXECUTE ON [sys].[sp_getapplock] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_task_run] TO [BNZNAG\srvBIJobtest]
+GO
+
+
+
+use [BIW]
+GO
+GRANT INSERT ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_job_run] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT EXECUTE ON [sys].[sp_getapplock] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_task_run] TO [BNZNAG\srvBISQLTest]
+GO

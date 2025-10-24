@@ -1,0 +1,57 @@
+
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+
+- INC007026655 (The ServiceNow Discovery credentials for SQL discovery (srvprodsnowdissql, srvdevsnowdissql) stopped working last September 17 when the password was rotated. Could you please help check if the credentials are still valid? ) - 1.5  hrs *** yesterday spen 2 hrs and discussed with Erica and David about ownership. Discuss with requester about requirements.
+
+
+- https://jira.nz.thenational.com/browse/DASD-3150 - 
+
+
+- INC007050853 ( SETTDMSQLD07 - Unable to connect - 'connection error, failed due to kerberos error' ) 
+
+- 
+
+
+
+
+
+

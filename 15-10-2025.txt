@@ -1,0 +1,66 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+
+- PRB0066991 (DealzRPT database performance degrade) -
+		- DealzRPT database performance degrade. BNZ Carl Management Tool and Wholesale Deposits applications are currently down causing impacting colleagues to make changes to customer loans, such as fixing new components, repaying or redrawing, and reducing limits. Node 03 (Primary) has a misconfigured SCSI configuration. Fail over to a secondary node, Node 04, had a more optimal SCSI configuration, restoring service. Problem ticket to identify issue with primary node.
+- https://jira.nz.thenational.com/browse/DASD-3179
+		- update Problem ticket and Jira task "Root causes analysis has been conducted and recommendations defined. Please refer confluence page blow for complete details.
+https://confluence.nz.thenational.com/display/ODS/DealzRPT+Database+Performance+Degrade+Report%3A+Root+Cause+Analysis+and+Recommendations"
+
+
+- https://jira.nz.thenational.com/browse/DASD-3185 - Help troubleshooting login issue on BIDWTEST server. I am configuring a new version of Red but am getting a login error message and cannot identify what is causing the issue. Need help to identify the account that is causing the error and also what authentication (Windows or SQL) it is using
+
+	- No access, request fr access and ping Camilla for approval.
+	- 
+	
+- https://jira.nz.thenational.com/browse/DASD-3197 
+Please can we get the Production Deposits database set up on the QA server.
+Database: Deposits
+Back up from: dblst-mrkha-prod
+Restored to: dblst-mrk-ppte
+It does not have to be a fresh backup the latest one will do.
+Create the user BNZNAG
+srvMktsPowerBIqa in the database with db_datareader permissions as per the below script) 
+
+- dblst-mrkha-prod (Listener)- SWVPMRKSQL01
+- dblst-mrk-ppte (Listener) - SWVQMRKSQL02
+
+- Contact Nigel and he confirmed "looks right to me" hence closed.

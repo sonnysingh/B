@@ -1,0 +1,139 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+
+- https://jira.nz.thenational.com/browse/DASD-3078 - FW: Change task CTASK2686836 has been assigned to group BNZ-Database Support-SQL
+	- completed successfully on 29-09-2025 11:55:00
+	- From \\BNZNAG.NZ.THENATIONAL.com\dfslocation\ApplicationSource\DataManagement\DBFileXfr\BrokerLoanPortal\Archive To Parent folder (BrokerLoanPortal)
+	
+- INC007017399 ( sorbbisqlp04:Drive H: has 0% space left ) - Known Problem. Refer PRB0065563
+
+- INC007017397 ( sorbbisqlp04:Drive I: has 0% space left ) - Known Problem. Refer PRB0065563
+
+- INC007017395 ( sorbbisqlp04:Drive O: has 2% space left ) - Known Problem. Refer PRB0065563
+
+- INC007017393 ( sorbbisqlp04:Drive J: has 3% space left ) - Known Problem. Refer PRB0065563
+
+
+- https://jira.nz.thenational.com/browse/DASD-3094 - 
+The Treasury team have an Excel Reconciliation spreadsheet which was used to connect directly to the ABS Database, however that access was removed during the ABS Plus project implementation. This has necessitated additional manual business processes for their reconciliation.
+I am now looking at alternative options, with one of those being to re-connect Excel to the DB, while enabling additional DB security features (to address addressing security concerns), so my questions are the following:
+Could we enable SQL Server audit logging on for this DB?
+And if so, can this be enabled for this user / connection only? 
+This would be to minimise the performance impact to the ABS/Travis apps.
+Could we enable Forced Encryption in Transit for the DB connection?
+Likewise, can this be enabled for this user / connection only?
+Again to minimise the performance impact.
+Alternatively, do we know if the connection is already encrypted? 
+As my security advisor (Oliver Lineham) suggested this may already be the case (potentially TLS?)
+The DBs in question are shown in the attached screenshot.
+
+
+
+SELECT 
+    s.session_id,
+    s.login_name,
+    s.program_name,
+    s.host_name,
+    c.encrypt_option AS Is_Encrypted,
+    c.client_net_address AS IP_Address,
+    CASE c.encrypt_option
+        WHEN 'TRUE' THEN NCHAR(10003) + '  Using certificate/TLS'
+        ELSE  NCHAR(10007) + '  Not encrypted (certificate available but not used)'
+    END AS Encryption_Status
+FROM sys.dm_exec_connections c
+INNER JOIN sys.dm_exec_sessions s ON c.session_id = s.session_id
+WHERE s.is_user_process = 1
+ORDER BY c.encrypt_option DESC, s.program_name;
+
+
+
+EXEC sp_readerrorlog 0, 1, N'encryption' - SWVPABSSQL01
+LogDate----------------|----ProcessInfo-------| Text
+2025-09-28 07:03:12.400		spid27s			  The certificate [Cert Hash(sha1) "A2CD79AB05759C9B028186003337A21E2A66011D"] was successfully loaded for encryption.
+
+
+EXEC sp_readerrorlog 0, 1, N'encryption'; - SWVPABSSQL02
+LogDate	ProcessInfo	Text
+2025-09-28 18:39:29.730	spid26s	The certificate [Cert Hash(sha1) "B99C3D6653A0F708B03DCBD5E60E7D90BCA9CD7C"] was successfully loaded for encryption.
+
+EXEC sp_readerrorlog 0, 1, N'encryption'; - SWVPABSSQL51
+LogDate	ProcessInfo	Text
+2025-09-28 07:26:17.610	spid28s	The certificate [Cert Hash(sha1) "ECBD52FE0AB63F06A479DF207A1203A8FBAD4FF7"] was successfully loaded for encryption.
+
+
+EXEC sp_readerrorlog 0, 1, N'encryption' - SWVPABSSQL52
+LogDate	ProcessInfo	Text
+2025-09-28 18:51:01.300	spid27s	The certificate [Cert Hash(sha1) "2A298293EB70A056D5872002AC42F67413E94B42"] was successfully loaded for encryption.
+
+EXEC sp_readerrorlog 0, 1, N'encryption' - SWVDABSSQL01
+LogDate	ProcessInfo	Text
+2025-09-21 05:31:03.990	spid23s	The certificate [Cert Hash(sha1) "4CC15A9B08BB5B315FE7FD8403461374159034CA"] was successfully loaded for encryption.
+
+EXEC sp_readerrorlog 0, 1, N'encryption' - SWVTABSSQL01
+LogDate	ProcessInfo	Text
+2025-09-21 05:31:01.640	spid22s	The certificate [Cert Hash(sha1) "B3FC9F37E237442D2FCCDE65B5938B92D0F65AEF"] was successfully loaded for encryption.
+
+
+
+
+select @@VERSION
+
+SELECT serverproperty('ProductVersion') as Version,
+serverproperty('ProductLevel') as ServiePack,
+serverproperty('ProductUpdateLevel') as CU_Level,
+serverproperty('Edition') as Edition
+
+EXEC xp_instance_regread 
+    N'HKEY_LOCAL_MACHINE', 
+    N'SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\SuperSocketNetLib', 
+    N'ForceEncryption';
+
+
+
+- 
+
+- 
+
+
+
+
+
+

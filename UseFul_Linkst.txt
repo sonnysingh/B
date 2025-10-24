@@ -1,0 +1,158 @@
+
+
+###SQL Server 
+
+DB Mail...
+BNZ_MSSQL_Support@bnz.co.nz
+mailhost.nz.thenational.com - 25
+
+
+##Jump Box 
+- SETTDMSQLMP21.BNZNAG.NZ.THENATIONAL.com (10.64.154.139) - Eduard & Anna
+- SORBDMSQLMP01.BNZNAG.NZ.THENATIONAL.com () - Erica & Me
+- TAUERDSAPPINP01.BNZNAG.NZ.THENATIONAL.com () - Azure Servers
+
+File Shares
+\\saueazfsq01\bnz-datamanagement-team\Source
+
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+
+###Market New PPTE & Prod Servers: U_SWVPMRKSQL01_ServerAdministrators | U_SWVQMRKSQL01_ServerAdministrators
+SWVQMRKSQL01, SWVQMRKSQL02, SWVQMRKSQL03, SWVPMRKSQL01, SWVPMRKSQL02, SWVPMRKSQL03, SWVPMRKSQL04
+
+
+SailPoint Servers...
+Prod - SAKLSQLSPTP01\SQL2017 (primary) - [ AG-SPT-PROD - SWVPSPTSQL01\SQL2017 (2ndary]
+
+## SWVTMRKSQL01 - 2 SQL Instances | Markets Server Upgrade
+SWVTMRKSQL01\REPORTING | SWVTMRKSQL01\MSSQLMRKT
+-- https://confluence.nz.thenational.com/display/ODS/Markets+Server+Upgrade
+
+
+## 
+PROD - dblst-mrkha-prod, 4309 (Listener) - SWVPMRKSQL01\MSSQLMRKT | SWVPMRKSQL02\MSSQLMRKT
+PPTE - dblst-mrk-ppte, 4309 (Listener) - SWVQMRKSQL01\MSSQLMRKT | SWVQMRKSQL02\MSSQLMRKT
+
+- dbapp-dealzrpt.bnznag.nz.thenational.com | SWVPMRKSQL04\REPORTING (primary) - SWVPMRKSQL03\REPORTING Secondary (PPTE)
+
+## DBAPP-CWX-TEST - SAKLDMSQLT05\MSSQL2014
+
+##
+- dblst-mrkha-prod (Listener)- SWVPMRKSQL01
+- dblst-mrk-ppte (Listener) - SWVQMRKSQL02
+
+
+Azure - \\SAUEAZFSP01\bnz-tas-team
+
+MyAccess database - SAKLSQLSPTP01\SQL2017
+
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+SAP ECC Non prod SQL Database server swmdchumsql04/10.150.13.58 - SWMDCHUMSQL03 (Ned) | SWMDCHUMSQL04\SAP2019 (NEQ)
+
+DBLST-SP-PPTE\SP2013 - SORBSPSQLQ01.BNZNAG.NZ.THENATIONAL.com - SharePoint 2013 PPTE environment
+
+settdmsqld07 - 
+
+DBAPP-APEX | APEX Server - AGs
+SAKLDMSQLP05\MSSQL2014 (Listener - DBLST-APEX-PROD) - Primary
+SAKLDMSQLP25\MSSQL2014 (Listener - DBLST-APEX-PROD) - Secondary 
+Name			PrimaryReplicaServerName	SecondaryReplicaServerName
+AG_RPA_Prod (Listener - DBLST-RPA-PROD)		SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-ADM-PROD	(Listener - DBLST-ADM-PROD)		SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-APEX-PROD(Listener - DBLST-APEX-PROD) 	SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-ATM-PROD	(Listener - DBLST-ATM-PROD)		SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-CSP-PROD		SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-CWRKS-PROD	SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-MBAM-PROD	SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-OPTM8-PROD	SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+AG-SCRTSVR-PROD	SAKLDMSQLP05\MSSQL2014		SAKLDMSQLP25\MSSQL2014
+
+Test - SWLGDMSQLT01\MSSQL2014
+	
+
+ODM DB - SORBBISQLP04 ( SQL Server 2016, SQL Server 2012 ) | sorbbisqlp04 (Finhub Db & SSAS (SWXPBISSAS03:23831 / BITabularProd:23831 )
+
+Lending Forms and UPI DB - SAKLDMSQLP01 (Primary) | SAKLDMSQLP21 (DR) ( SQL Server 2014 )
+
+DEALZ DB - SORBDMSQLP08, SETTDMSQL28 - ( SQL Server 2014 )
+
+SAP DB - SQL SERVER 2019
+asesapsmdbp01 - SASESAPSMDBP01
+auesapsmdbp01 - SAUESAPSMDBP01
+sauesapsqlp01 - SAUESAPSQLP01
+auesapsqlp02 - SAUESAPSQLP02
+sasesapsqlp01 - SASESAPSQLP01 
+sasesapsqlp02 - SASESAPSQLP02
+sauestdbp01 - SAUESTDBP01.BNZNAG.NZ.THENATIONAL.com - SQL Server VM
+
+
+
+Server: DBLST-OCTOPUS-PROD (Database: Octopus_OS) - SORBOCTOP01.bnznag.nz.thenational.com
+AG - AG-BNZI-EDUC (DB: dp_test) SmartComm_DocGen) 
+- SORBDSSQLP05\MSSQL2017 - SETTDSSQLP25\MSSQL2017 (Secondary)
+AG - AG-OCTO-PROD (DB: Octopus_OS)
+- SORBDSSQLP05\MSSQL2017 - SETTDSSQLP25\MSSQL2017 (Secondary) 
+
+- SORBDSSQLP05\MSSQLBNZI - Stopped
+
+
+
+BIWFCH DB - SWXPBISQL06 (Primary) & SWXPBISQL07 (Secondary)
+
+
+
+- TAUERDSAPPINP01.BNZNAG.NZ.THENATIONAL.com () - Azure Servers JUMP Box
+SASESAPSMDBP01 - SQL2019 ( SAP2019A | SAP2019A ) 
+SASESAPSQLP01 - SQL2019 ( SAP2019A | SAP2019B | SAP2019C ) - AG Primary
+SASESAPSQLP02 - SQL2019 ( SAP2019A | SAP2019B | SAP2019C ) - AG secondary
+SAUEESSQP01 - 
+SAUEESSQP21
+SAUEKFSQLP02
+SAUEKFSQLP22
+SAUESAPSMDBP01 - SQL2019 ( SAP2019A | SAP2019B )
+SAUESAPSQLP01
+SAUESAPSQLP02
+SAUESTDBP01
+
+
+- sakldmsqlp25\MSSQL2014
+
+- SharePoint 2013 PROD environment
+	- SORBSPSQLP01 - Primary
+	- SORBSPSQLP02 - Secondary
+	- SETTSPSQLP21 - DR
+
+- SharePoint 2013 PPTE environment
+	SORBSPSQLQ01\SP2013,4309 - Primary
+	SORBSPSQLQ02\SP2013,4309 - Secondary
+	SETTSPSQLQ21\SP2013,4309 - DR
+
+
+##
+PROD HA (DBAPP-DEALZ.bnznag.nz.thenational.com:4309) - SORBDMSQLP08\MSSQLMRKT 
+	- (2ndary - SETTDMSQLP28\MSSQLMRKT - AG: AG-MRKT-PROD)
+	- SETTDMSQLP29\MSSQLMRKT - Secondary Log Shipping Server of SORBDMSQLP09\MSSQLMRKT
+
+PROD LA (dbapp-dealzrpt.bnznag.nz.thenational.com:4309) - SORBDMSQLP09\MSSQLMRKT
+
+TEST HA (dbapp-dealz-test:4309) / TEST LA (dbapp-dealz-test:4309) 
+- SAKLDMSQLT05\MSSQLMRKT
+
+
+
+
+BNZNAG\L_BI_Srv_admins - This enables access to Local Administrators on all BI Servers so that employees can administer these servers
+
+BNZNAG\L_BI_SQL_DBA - This enables access to L_BI_SQL_DBA
+
+Jira Request ( Pre-Templates) - Platforms - General Service Centre - Service project 
+( https://jira.nz.thenational.com/servicedesk/customer/portal/35/group/345 )
+
+
+
+
+
+
+
+

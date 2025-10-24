@@ -1,0 +1,99 @@
+
+?r7ad9u48El_$FG%ZY
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+- Meeting - Storage Audit - 1.5 hrs
+
+- https://jira.nz.thenational.com/browse/DASD-3185 - 
+There were two sessions held to investigate the issue, one was a one-on-one session, and the second was conducted with the WhereScape RED them. No issues were identified with SQL Server connectivity. The problem appears to be related to configuration settings within the WhereScape RED application. The session with the WhereScape RED team did not successfully resolve the issue. As there are no issues identified at the SQL Server end. Requester confirmed to close the ticket.
+
+
+-INC007100778 (sorbdmsqlp07:Processor Processor Time >= 90% and outside all baselines for 60 min.) - 1.5 hrs
+	- Investigation conducted on the server and monitored trends of CPU.  CPU utilization is average between 2-19% 
+
+
+
+kZzeYGgbm5sBT05RUq
+
+
+
+use [BIW]
+GO
+GRANT INSERT ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_job_run] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT EXECUTE ON [sys].[sp_getapplock] TO [BNZNAG\srvBIJobtest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_task_run] TO [BNZNAG\srvBIJobtest]
+GO
+
+
+
+use [BIW]
+GO
+GRANT INSERT ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_audit_log] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_job_run] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT EXECUTE ON [sys].[sp_getapplock] TO [BNZNAG\srvBISQLTest]
+GO
+use [BIW]
+GO
+GRANT UPDATE ON [dbo].[ws_wrk_task_run] TO [BNZNAG\srvBISQLTest]
+GO
