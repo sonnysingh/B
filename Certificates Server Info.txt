@@ -1,0 +1,129 @@
+SAKLDMSQLQ05.bnznag.nz.thenational.com
+SAKLDMSQLQ05
+DBLST-ATM-PPTE.bnznag.nz.thenational.com
+DBLST-ATM-PPTE
+DBLST-CSP-PPTE.bnznag.nz.thenational.com
+DBLST-CSP-PPTE
+DBLST-RPA-PPTE.bnznag.nz.thenational.com
+DBLST-RPA-PPTE
+IP Address=10.64.161.36
+
+DBLST-ATM-PPTE.bnznag.nz.thenational.com
+DBLST-ATM-PPTE
+DBLST-CSP-PPTE.bnznag.nz.thenational.com
+DBLST-CSP-PPTE
+DBLST-RPA-PPTE.bnznag.nz.thenational.com
+DBLST-RPA-PPTE
+
+
+
+DNS Name=SAKLDMSQLP01.bnznag.nz.thenational.com
+DNS Name=SAKLDMSQLP01
+IP Address=10.64.161.30
+
+HS Apps 2017 _ SHAREDSERVER _ PPTE
+1. Powershell - Deploy Module BNZ - VenafiPS
+SETTDSSQLQ25
+SORBDSSQLQ05
+
+
+###
+SPL-1042 _ COI _ Test - 
+1. Powershell - Deploy Module BNZ - VenafiPS
+SETTCOISQLT01
+
+Display Name: SETTCOISQLT01
+Enabled: Yes
+Deployment Environments: COI 2019 - TEST -Primary Test Environment
+SPL-1042 _ COI _ Test - Primary Test Environment - Patching
+
+
+###
+Display Name: SETTDMSQLT09
+Enabled: Yes
+Deployment Environments
+Markets 2014 - TEST - Primary Test Environment - Primary Test Environment - Patching
+
+DNS Name=SETTDMSQLT09.bnznag.nz.thenational.com
+DNS Name=SETTDMSQLT09
+DNS Name=dbapp-dealzrpt-test.bnznag.nz.thenational.com
+DNS Name=dbapp-dealzrpt-test
+DNS Name=dbapp-dealz-test.bnznag.nz.thenational.com
+DNS Name=dbapp-dealz-test
+IP Address=10.64.154.39
+
+
+
+
+
+###
+Display Name: SETTDMSQLQ28 settdmsqlq28
+Enabled: No
+Deployment Environments: Markets 2014 - PPTE | Primary Pre-Production Environment | APP-8193 _ BNZ Dealz _ PPTE
+
+DNS Name=SETTDMSQLQ28.bnznag.nz.thenational.com
+DNS Name=SETTDMSQLQ28
+DNS Name=dbapp-dealzrpt-qa.bnznag.nz.thenational.com
+DNS Name=dbapp-dealzrpt-qa
+DNS Name=dbapp-dealz-qa.bnznag.nz.thenational.com
+DNS Name=dbapp-dealz-qa
+DNS Name=dblsr-mrkt-ppte.bnznag.nz.thenational.com
+DNS Name=dblsr-mrkt-ppte
+IP Address=10.64.161.87
+
+dbapp-dealzrpt-qa.bnznag.nz.thenational.com;dbapp-dealzrpt-qa;dbapp-dealz-qa.bnznag.nz.thenational.com;dbapp-dealz-qa;dblsr-mrkt-ppte.bnznag.nz.thenational.com;dblsr-mrkt-ppte
+
+
+
+
+
+Display Name: SETTDMSQLQ09
+Enabled: No
+Deployment Environments: Markets 2014 - PPTE | Primary Pre-Production Environment | APP-8193 _ Dealz RPT _ PPTE
+
+DNS Name=SETTDMSQLQ09.bnznag.nz.thenational.com
+DNS Name=SETTDMSQLQ09
+DNS Name=dbapp-dealzrpt-qa.bnznag.nz.thenational.com
+DNS Name=dbapp-dealzrpt-qa
+DNS Name=dbapp-dealz-qa.bnznag.nz.thenational.com
+DNS Name=dbapp-dealz-qa
+DNS Name=dblsr-mrkt-ppte.bnznag.nz.thenational.com
+DNS Name=dblsr-mrkt-ppte
+IP Address=10.64.161.84
+
+
+Current..
+dbapp-dealzrpt-qa.bnznag.nz.thenational.com,4309; #{Octopus.Machine.Name}.bnznag.nz.thenational.com
+
+
+
+
+### HS-Apps 2014 - PPTE
+#{Octopus.Machine.Name}.bnznag.nz.thenational.com;dblst-atm-ppte.bnznag.nz.thenational.com;dblst-atm-ppte;dblst-csp-ppte.bnznag.nz.thenational.com;dblst-csp-ppte;dblst-rpa-ppte.bnznag.nz.thenational.com;dblst-rpa-ppte
+
+DNS Name=SAKLDMSQLQ25.bnznag.nz.thenational.com
+DNS Name=SAKLDMSQLQ25
+DNS Name=DBLST-ATM-PPTE.bnznag.nz.thenational.com
+DNS Name=DBLST-ATM-PPTE
+DNS Name=DBLST-CSP-PPTE.bnznag.nz.thenational.com
+DNS Name=DBLST-CSP-PPTE
+DNS Name=DBLST-RPA-PPTE.bnznag.nz.thenational.com
+DNS Name=DBLST-RPA-PPTE
+IP Address=10.64.161.37
+
+
+
+
+
+Display Name: SETTDMSQLQ07
+Enabled Yes
+Deployment Environments - Shared SQL Reporting 2017 - PPTE | Primary Pre-Production Environment
+Target Tags | choco-server | dynatrace-agent | sql-mgmt | sql-server | ssrs-server
+
+
+DNS Name=SETTDMSQLQ07.bnznag.nz.thenational.com
+DNS Name=SETTDMSQLQ07
+DNS Name=dbapp-crs-ppte.bnznag.nz.thenational.com
+DNS Name=dbapp-crs-ppte
+IP Address=10.64.155.10
+

@@ -1,0 +1,62 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+- https://jira.nz.thenational.com/browse/DASD-3005 - SQL - Database Related Consultation
+- I am from the BNZ Tahi IT Platform and Asset Mgmt Team. We are trying to find a solution to automatically 'discover' the APPID that a DB instance/catalog belongs to so that we can capture it and update it accurately in the CMDB without having service owners try to do it manually if possible. Currently the APPID / Environment automatically inherits from the DB Server but may not reflect the correct APP of the DB. Therefore we want to work with you to understand if APPID is something that is coded somewhere in the database or database server or if there is another source of information that we can pull from.
+
+Question to asked
+	- 
+
+
+
+
+
+
+
+
+- 
+
+- 
+
+
+
+
+
+

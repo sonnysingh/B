@@ -1,0 +1,21 @@
+
+
+## How to Collect Logs for Veeam Plug-in for Microsoft SQL Server
+1- GO TO - https://www.veeam.com/kb4438
+2- Download the Log Collection script from the VeeamHub:
+https://raw.githubusercontent.com/VeeamHub/powershell/master/VeeamPluginforMSSQL-Logs/SQL_Plugin_KB.ps1
+3- Copy and Save the script to " C:\Program Files\Veeam\Plugins\Microsoft SQL\ " on the computer where Veeam Plug-in for Microsoft SQL Server is installed.
+4- Open an Administrative Command Prompt or PowerShell window and run the following command:
+		********		Remember to update the command with the path to the script.
+	 PowerShell.exe -ExecutionPolicy ByPass -File .\SQL_Plugin_KB.ps1
+5- The script executes simple select queries to gather information; no system changes are made.
+6- The script will create a log bundle and export it to C:\ProgramData\Veeam\Veeam_Case_Logs.
+
+Note:
+The script automatically gathers the following information:
+Veeam Plug-in for Microsoft SQL Server log files located in C:\ProgramData\Veeam\Backup\MSSQLPluginLogs
+Windows Application, System, Security, SMB, and Windows FailoverClustering events
+Native SQL_Err_Log_Folder log folder.
+
+Copy from SQL Server and upload to SFTP site 
+\\bnznag\dfslocation\ApplicationSource\DataManagement\EDSShare\Source\MS_SQL_Server\Veeam Backup software

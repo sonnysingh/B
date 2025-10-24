@@ -1,0 +1,104 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+
+	
+- INC006990832 (Database backup failed on multiple non-Prod servers.) 
+	- Read thru the article 
+	- https://jira.nz.thenational.com/browse/ODS-649 ( ODS - SQL - Veeam Plugin Installation ) 
+
+- https://jira.nz.thenational.com/browse/DASD-2977 - FW: SETTDMSQLT09.bnznag.nz.thenational.com Certificate Expiring in 60 Days
+DNS Name=SETTDMSQLT09.bnznag.nz.thenational.com
+DNS Name=SETTDMSQLT09
+DNS Name=dbapp-dealzrpt-test.bnznag.nz.thenational.com
+DNS Name=dbapp-dealzrpt-test
+DNS Name=dbapp-dealz-test.bnznag.nz.thenational.com
+DNS Name=dbapp-dealz-test
+IP Address=10.64.154.39
+
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+
+- INC006977921 (sorbbisqlp04:Drive K: has 9% space left) - 
+	- Known Problem. Refer #PRB0065563  ( as discussed with Erica today innthe meeting.)
+
+- INC006977919 (sorbbisqlp04:Drive M: has 6% space left) 
+	- Known Problem. Refer #PRB0065563
+
+- INC006977918 (sorbbisqlp04:Drive P: has 7% space left) 
+	- Known Problem. Refer #PRB0065563
+	
+- INC006977824 (settbisqlp04:Drive K: has 9% space left) 
+	- Known Problem. Refer #PRB0065563
+
+- https://jira.nz.thenational.com/browse/DASD-2977 - FW: SETTDMSQLT09.bnznag.nz.thenational.com Certificate Expiring in 60 Days
+	- ping Eduard for advise as Server is not exists in Octopus. He confirmed "As discussed with Eduard, SQL Server SETTDMSQLT09 should be decommissioned.Transfer to Eduard as requested."
+
+- https://jira.nz.thenational.com/browse/DASD-3001 - SQL - SQL Script Request (Could your team please confirm whether the below file/report is being generated from the ADM Database?
+			ADM_Users.csv | SQL Server: SAKLDMSQLP05\MSSQL2014  | Database name: ADM |  User: BNZNAG\srvProdSqlADM)
+		- Investigationconducted and alst file on 19-09-2025 and job executing successfully.
+		- screen shots have attached.
+Provided the Script...
+	$databaseName="ADM";
+	#$instanceName="SAKLDMSQLP05,4209";
+	$instanceName="LPC:SAKLDMSQLP05\MSSQL2014";
+	#$baseExportPath="\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBFileXfr\ADM";
+	$baseExportPath="\\SETTAUTOJOBSP01\myAccess_PROD$";
+	$report = "ADM_Users";
+
+	$FileName=$baseExportPath+"\"+$report+".csv";
+
+	Set-Location C:
+
+	If (Test-Path $FileName) {
+		Remove-Item $FileName
+	};
+
+	$query = "SELECT [UserID],REPLACE(REPLACE(REPLACE([UID],'L',''),'P',''),'C','') as BNZStaffNo,[Profile] FROM [dbo].[Persons] WHERE [Status] = 'A' AND [CoID] = 'BNZ' AND [GID] = 'user' AND [UID] <> 'ExtUser' ORDER BY [UserID];";
+
+	(Invoke-SqlCmd –ServerInstance "$instanceName" -Database "$databaseName" –Query "$query" | ConvertTo-Csv -NoTypeInformation) -replace '"' | Set-Content $FileName;
+
+- 
+
+- 
+
+- 
+
+
+
+
+
+

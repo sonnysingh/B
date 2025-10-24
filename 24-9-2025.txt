@@ -1,0 +1,96 @@
+
+
+*** Remove Data amd Log files of DBs CxActivity & CxDB in NEXT WEEK on  SAKLDMSQLP04****
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+## You could try below for Non-Prod 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+"C:\Program Files\Veeam\Plugins\Microsoft SQL\MSSQLRecoveryManager.exe" --backup  --type=full  --d="FinHub" --parallelism=1 --name="VEEAM_FULL_BACKUP_FinHUB" --description="VEEAM_FULL_BACKUP_FinHUB" --retention=7 --use_compression --check_preferred
+
+On call number (04) 924 9350
+
+Letmein@C01
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task
+	- Discuss some 
+
+- ODS - Stand up - .5 hr
+
+- Clean up some Jira Tickets (cards) - SLA Breach
+- Review Jira Cards and SNOW board for INc/REQs/Change Tasks
+- Review Chnage Tasks and asked Eduard on TEams to whoch ne i fesible to pick up.
+
+- https://jira.nz.thenational.com/browse/DASD-2349 
+	- Just a heads up regarding the ADM October 2025 release updates. Once delivery is deployed to environment, SQL will be provided then that will be required to updated ADM Production Database.
+	- Ant asked "Deployment to production will take place on the 18th of October between 5-7pm." - I am not available after hours hence assigning to Eduard."
+
+
+- https://jira.nz.thenational.com/browse/DASD-3028 - SQL - Database Related Consultation
+	- We, BNZ Unsecured Lending, are trying to locate if service account is being used as its password has not been changed in more than 365 days. Can you please help us locate if the mentioned service account is still being used?
+	- Investigated and not found neither on Apex SQL Server nor confluence page. Found APP_WKC (https://confluence.nz.thenational.com/pages/viewpage.action?pageId=1822983477)  
+		- but not sure which application as connection string confirm DB server name and further investigation can be done.
+	- Ask team on MSSQL Team Meet chat.
+
+- https://jira.nz.thenational.com/browse/DASD-3001 - Ant confirmed to close it. hence close it.
+
+- https://jira.nz.thenational.com/browse/DASD-2957 - ( I need someone to go through all of the server builds we are doing and work out the total amount of space we will be needing for SQL server builds over the next few months) 
+	- Investigate the Host Clusters , asked Eduard, search Conf pages and then contact Paul. Paul provided the info on severs and confirmed these are oracle ones NOT SQL.
+	- Remove my nam ut of Jira Card.
+
+
+- TASK0954944 (INC006983674) -  Validation of Prod user on Travellers Cheques database.
+Please review the User settings on the following to ensure the Service Account (user) is set up with standard Windows Authentication. 
+sServer: SAUEESSQP01
+Database: TravellersCheques
+ServiceAccount: srvProdTravellersChe
+
+Error Investigation Notes.
+This error occurs coz the SQL Server connection attempt seems using integrated authentication (Windows) but user's domain is not trusted by the SQL server's domain or SQL Server cannot validate the Windows credentials due to networking/domain issues.
+Possible Cause - Cross domain authentication ; Connection string misconfiguration or Double hop / Kerberos delegation issue
+Possible solutions
+1- SQL login for windows account which has validated and correctly configured.
+2- Instead of Integrated authentication use SQL Server authentication (user & password) in connection string.
+3- If multi-tier app then configure SPN and enable Kerberos delegation
+Hope helps to understand.
+
+
+
+
+
+
+- Host Cluster
+ORB-PRD-ORP
+ORB-PRD-ORS
+ETT-PRD-ORP
+ETT-PRD-ORS
+ETT-NPR-ORD
+ETT-NPR-ORD
+
+
+- 
+
+- 
+
+
+
+
+
+

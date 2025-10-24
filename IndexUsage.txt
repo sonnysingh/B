@@ -1,0 +1,17 @@
+    SELECT
+        OBJECT_NAME(s.object_id) AS TableName,
+        i.name AS IndexName,
+        s.user_seeks,
+        s.user_scans,
+        s.user_lookups,
+        s.user_updates
+    FROM
+        sys.dm_db_index_usage_stats s
+    JOIN
+        sys.indexes i ON s.object_id = i.object_id AND s.index_id = i.index_id
+    JOIN
+        sys.objects o ON s.object_id = o.object_id
+    WHERE
+        s.object_id= OBJECT_ID('application') -- Filter for user tables only
+    --ORDER BY
+    --    s.user_seeks DESC;
