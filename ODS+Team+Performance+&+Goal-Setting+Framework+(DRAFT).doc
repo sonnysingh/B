@@ -1,0 +1,617 @@
+Date: Fri, 24 Oct 2025 15:57:17 +1300 (NZDT)
+Message-ID: <1381932876.714.1761274637372@ip-10-86-56-165.ap-southeast-2.compute.internal>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_713_1714288474.1761274637371"
+
+------=_Part_713_1714288474.1761274637371
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>ODS Team Performance &amp; Goal-Setting Framework (DRAFT)</title=
+>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>ODS Team Performance &amp; Goal-Setting Framework (DRAFT)</h1>
+    <div class=3D"Section1">
+        <h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Introd=
+uction"><span><span>Introduction</span></span><span>&nbsp;</span></h2>
+<p><span><span>Welcome to the ODS Team Performance &amp; Goal-Setting Frame=
+work. This guide is designed to help every member of the Operational Databa=
+se Services (ODS) team understand our performance guidelines, set meaningfu=
+l goals, and navigate both our rating system and career pathways confidentl=
+y. You can trust that the framework will be applied fairly, with open commu=
+nication and support for your development at every step.</span></span><span=
+>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-CareerPathway:=
+CapabilityProgression"><span><span>Career Pathway: Capability Progression</=
+span></span><span>&nbsp;</span></h2>
+<h3 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Understandingt=
+he1-5PerformanceRatingSystem"><span><span>Understanding the 1-5 Performance=
+ Rating System</span></span><span>&nbsp;</span></h3>
+<p><span><span>Our performance system uses a 1-5 rating scale to provide cl=
+arity on expectations and outcomes.&nbsp;</span><span>Here=E2=80=99s</span>=
+<span>&nbsp;what each rating means in practice:</span></span><span>&nbsp;</=
+span></p>
+<div class=3D"table-wrap">
+<table class=3D"wrapped relative-table confluenceTable" style=3D"width: 100=
+.803%;">
+<colgroup>
+<col style=3D"width: 10.1723%;">
+<col style=3D"width: 28.369%;">
+<col style=3D"width: 35.7045%;">
+<col style=3D"width: 25.7272%;">
+</colgroup>
+<tbody class=3D"">
+<tr class=3D"">
+<td class=3D"confluenceTd"><p><strong><span><span>Rating</span></span></str=
+ong><span>&nbsp;</span></p></td>
+<td class=3D"confluenceTd"><p><strong><span><span>Description</span></span>=
+</strong><span>&nbsp;</span></p></td>
+<td class=3D"confluenceTd"><p><strong><span><span>What It Looks Like</span>=
+</span></strong><span>&nbsp;</span></p></td>
+<td class=3D"confluenceTd"><p><strong><span><span>Comment at end of year</s=
+pan></span></strong></p></td>
+</tr>
+<tr class=3D"">
+<td class=3D"highlight-#ffebe6 confluenceTd" title=3D"Background color : Li=
+ght red 35%" data-highlight-colour=3D"#ffebe6"><p title=3D""><span><span>1 =
+- Unsatisfactory</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#ffebe6 confluenceTd" title=3D"Background color : Li=
+ght red 35%" data-highlight-colour=3D"#ffebe6"><p title=3D""><span><span>Pe=
+rformance falls well below expectations. Goals are not&nbsp;</span><span>me=
+t</span><span>&nbsp;and significant improvement is&nbsp;</span><span>requir=
+ed</span><span>.</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#ffebe6 confluenceTd" title=3D"Background color : Li=
+ght red 35%" data-highlight-colour=3D"#ffebe6"><p title=3D""><span><span>Co=
+nsistent missed deadlines, lack of accountability, poor collaboration</span=
+><span>, not</span><span>&nbsp;aligning with team or organizational standar=
+ds.</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#ffebe6 confluenceTd" title=3D"Background color : Li=
+ght red 35%" data-highlight-colour=3D"#ffebe6"><p title=3D""><span><span>Pr=
+obably in the wrong role and being asked too much of, in need of upskilling=
+ or support in someway to get back on track</span></span></p></td>
+</tr>
+<tr class=3D"">
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Background color : Li=
+ght yellow 35%" data-highlight-colour=3D"#fffae6"><p title=3D""><span><span=
+>2 - Needs Improvement</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Background color : Li=
+ght yellow 35%" data-highlight-colour=3D"#fffae6"><p title=3D""><span><span=
+>Performance is below expectations. Some goals are met, but there are notab=
+le gaps that need&nbsp;</span><span>addressing</span><span>.</span></span><=
+span>&nbsp;</span></p></td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Background color : Li=
+ght yellow 35%" data-highlight-colour=3D"#fffae6"><p title=3D""><span><span=
+>Missed Attendance, Missed Learning, Partial completion of tasks, inconsist=
+ent quality, limited engagement</span><span>, not</span><span>&nbsp;proacti=
+ve in solving problems.</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#fffae6 confluenceTd" title=3D"Background color : Li=
+ght yellow 35%" data-highlight-colour=3D"#fffae6"><p title=3D""><span><span=
+>Missing some of the basics or has missed some of the basic requirements, o=
+utside of this doing well.</span></span></p></td>
+</tr>
+<tr class=3D"">
+<td class=3D"highlight-#e3fcef confluenceTd" title=3D"Background color : Li=
+ght green 35%" data-highlight-colour=3D"#e3fcef"><p title=3D""><span><span>=
+3 - Solid/Expected Performance</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#e3fcef confluenceTd" title=3D"Background color : Li=
+ght green 35%" data-highlight-colour=3D"#e3fcef"><p title=3D""><span><span>=
+Meets all core role expectations reliably.&nbsp;</span><span>Delivers on</s=
+pan><span>&nbsp;agreed goals and consistently&nbsp;</span><span>contributes=
+</span><span>&nbsp;to team success.</span></span><span>&nbsp;</span></p><p =
+title=3D""><br></p></td>
+<td class=3D"highlight-#e3fcef confluenceTd" title=3D"Background color : Li=
+ght green 35%" data-highlight-colour=3D"#e3fcef"><p title=3D""><span><span>=
+Timely delivery of work, effective collaboration, good problem-solving, ali=
+gns with BNZ=E2=80=99s strategic pillars.</span></span><span>&nbsp;</span><=
+/p></td>
+<td class=3D"highlight-#e3fcef confluenceTd" title=3D"Background color : Li=
+ght green 35%" data-highlight-colour=3D"#e3fcef"><p title=3D""><span><span>=
+A consistent and exemplary employee who will be nominated for any available=
+ renumeration bump&nbsp;</span></span></p></td>
+</tr>
+<tr class=3D"">
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><p title=3D""><span><span>4=
+ - Above and Beyond</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><p title=3D""><span><span>E=
+xceeds</span><span>&nbsp;expectations in several areas. Takes initiative, d=
+elivers outcomes beyond core role, and positively&nbsp;</span><span>impacts=
+</span><span>&nbsp;the team.</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><p title=3D""><span><span>C=
+hampions improvements,&nbsp;</span><span>mentors</span><span>&nbsp;others, =
+leads&nbsp;</span><span>additional</span><span>&nbsp;projects, drives innov=
+ation.</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#e6fcff confluenceTd" title=3D"Background color : Li=
+ght teal 35%" data-highlight-colour=3D"#e6fcff"><p title=3D""><span><span>A=
+s well as being a consistent and exemplary employee has gone above and beyo=
+nd and met stretch goals consistently all year, will be nominated for an ab=
+ove average renumeration bump&nbsp;</span></span></p><p title=3D""><span><s=
+pan>&nbsp;</span></span></p></td>
+</tr>
+<tr class=3D"">
+<td class=3D"highlight-#eae6ff confluenceTd" title=3D"Background color : Li=
+ght purple 35%" data-highlight-colour=3D"#eae6ff"><p title=3D""><span><span=
+>5 - Exceptional/Transformational</span></span><span>&nbsp;</span></p></td>
+<td class=3D"highlight-#eae6ff confluenceTd" title=3D"Background color : Li=
+ght purple 35%" data-highlight-colour=3D"#eae6ff"><p title=3D""><span><span=
+>Consistently delivers outstanding results, with significant impact&nbsp;</=
+span><span>outside</span><span>&nbsp;own role. Drives strategic change and =
+inspires others.</span></span><span>&nbsp;</span></p><p title=3D""><br></p>=
+</td>
+<td class=3D"highlight-#eae6ff confluenceTd" title=3D"Background color : Li=
+ght purple 35%" data-highlight-colour=3D"#eae6ff"><p title=3D""><span><span=
+>Leads cross-team initiatives, influences strategy, develops new capabiliti=
+es, prepares for leadership or new roles.</span></span><span>&nbsp;</span><=
+/p></td>
+<td class=3D"highlight-#eae6ff confluenceTd" title=3D"Background color : Li=
+ght purple 35%" data-highlight-colour=3D"#eae6ff"><p title=3D""><span><span=
+>A consistent and exemplary employee that has gone above and beyond and met=
+ stretch goals consistently all year and who has grown beyond the role, wil=
+l be nominated for an above average renumeration bump and other roles and o=
+pportunities as available</span></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Aimingfora3:So=
+lid/ExpectedPerformance"><span><span>Aiming for a 3: Solid/Expected Perform=
+ance</span></span><span>&nbsp;</span></h2>
+<p><span><span>A rating of 3 is the core target for all team members. It me=
+ans you meet the essential expectations of your role, deliver on your agree=
+d goals, and contribute positively to the team and organization. Examples o=
+f solid performance include:</span></span><span>&nbsp;</span></p>
+<ul>
+<li><span><span>Consistently completing assigned tasks on time and to a hig=
+h standard</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Collaborating effectively with colleagues</span></span><spa=
+n>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Proactively solving problems and supporting team objectives=
+</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Aligning your work with BNZ=E2=80=99s strategic pillars and=
+ priorities</span></span><span>&nbsp;</span></li>
+</ul>
+<p><span><span>Aiming for a 3 keeps you on track, builds your reputation, a=
+nd forms the foundation for further growth.</span></span><span>&nbsp;</span=
+></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Avoidinga2or1:=
+PreventingUnderperformance"><span><span>Avoiding a 2 or 1: Preventing Under=
+performance</span></span><span>&nbsp;</span></h2>
+<p><span><span>To avoid slipping into a 2 or 1 rating, pay attention to com=
+mon pitfalls:</span></span><span>&nbsp;</span></p>
+<ul>
+<li><span><span>Poor time management or missed deadlines</span></span><span=
+>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Lack of engagement or accountability</span></span><span>&nb=
+sp;</span></li>
+</ul>
+<ul>
+<li><span><span>Failure to communicate or collaborate with the team</span><=
+/span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Not aligning goals with team or organizational strategy</sp=
+an></span><span>&nbsp;</span></li>
+</ul>
+<p><span><span>Set at least one goal focused on&nbsp;</span><span>maintaini=
+ng</span><span>&nbsp;consistent performance and addressing any personal cha=
+llenges. For example: =E2=80=9CEnsure all assigned tasks are completed by a=
+greed deadlines and communicate proactively if obstacles arise.=E2=80=9D</s=
+pan></span><span>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-GoingAboveandB=
+eyond:Achieving4or5Ratings"><span><span>Going Above and Beyond: Achieving 4=
+ or 5 Ratings</span></span><span>&nbsp;</span></h2>
+<p><span><span>A rating of 4 or 5 requires extra effort, initiative, and im=
+pact:</span></span><span>&nbsp;</span></p>
+<ul>
+<li><strong><span><span>For a 4:</span></span></strong><span><span>&nbsp;Ta=
+ke on&nbsp;</span><span>additional</span><span>&nbsp;responsibilities, lead=
+ improvements, mentor colleagues, or deliver results that exceed your core =
+role.</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>For a 5:</span></span></strong><span><span>&nbsp;Co=
+ntribute outside your role, drive strategic projects, influence broader tea=
+m or organization outcomes, or prepare for leadership opportunities.</span>=
+</span><span>&nbsp;</span></li>
+</ul>
+<p><span><span>Striving for higher ratings means investing time and energy =
+beyond your usual workload. Be aware that this can be demanding, and not ev=
+ery cycle will be the right time to aim for a 4 or 5. Achieving a 5 may res=
+ult in consideration&nbsp;</span><span>for</span><span>&nbsp;new roles or r=
+esponsibilities.</span></span><span>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-HowtoWriteYour=
+Goals"><span><span>How to Write Your Goals</span></span><span>&nbsp;</span>=
+</h2>
+<p><span><span>Effective&nbsp;</span><span>goal-setting</span><span>&nbsp;i=
+s key to achieving your desired rating. Follow these steps:</span></span><s=
+pan>&nbsp;</span></p>
+<ol>
+<li><strong><span><span>Write 2-3 Goals to Achieve a 3:</span></span></stro=
+ng><span><span>&nbsp;These should be relevant to your core role, motivating=
+, and aligned with BNZ=E2=80=99s strategic pillars. Use the Tech Capability=
+ Framework to guide your choices.</span></span><span>&nbsp;</span></li>
+</ol>
+<ol>
+<li><strong><span><span>Write a Goal to Avoid Dropping to a 2 or 1:</span><=
+/span></strong><span><span>&nbsp;Focus on consistent delivery and overcomin=
+g known challenges.</span></span><span>&nbsp;</span></li>
+</ol>
+<ol>
+<li><span><span>If Aiming Higher:</span></span><span>&nbsp;</span></li>
+</ol>
+<ol>
+<li><span><span>For a 4: Add 'above and beyond' goals=E2=80=94such as leadi=
+ng a project, mentoring, or implementing significant improvements.</span></=
+span><span>&nbsp;</span></li>
+</ol>
+<ol>
+<li><span><span>For a 5: Include a goal that goes outside your role, such a=
+s driving a cross-team initiative or developing new capabilities that&nbsp;=
+</span><span>benefit</span><span>&nbsp;the wider organization.</span></span=
+><span>&nbsp;</span></li>
+</ol>
+<p><span><span>When writing each goal, be clear and specific. Define What y=
+ou want to achieve,&nbsp;</span><span>How</span><span>&nbsp;much (measurabl=
+e target), and&nbsp;</span><span>By</span><span>&nbsp;when (timeframe). Exa=
+mple: =E2=80=9CAutomate three manual reporting processes by Q2, improving t=
+eam efficiency by 20%.=E2=80=9D</span></span><span>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Remunerationan=
+dRewards:HowTheyWork"><span><span>Remuneration and Rewards: How They Work</=
+span></span><span>&nbsp;</span></h2>
+<p><span><span>Pay and rewards are&nbsp;</span><span>determined</span><span=
+>&nbsp;by performance ratings, available financial resources, and team-wide=
+ outcomes.&nbsp;</span><span>Here=E2=80=99s</span><span>&nbsp;what to expec=
+t:</span></span><span>&nbsp;</span></p>
+<ul>
+<li><span><span>Achieving a 3 ensures you&nbsp;</span><span>remain</span><s=
+pan>&nbsp;eligible for standard pay reviews and recognition.</span></span><=
+span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Higher ratings (4 or 5) may result in&nbsp;</span><span>add=
+itional</span><span>&nbsp;rewards, but these depend on the team=E2=80=99s o=
+verall performance and the available financial pool.</span></span><span>&nb=
+sp;</span></li>
+</ul>
+<ul>
+<li><span><span>If many team members achieve 4 or 5, the reward pool may be=
+ spread thinner, resulting in smaller individual increases.</span></span><s=
+pan>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>A rating of 5 may lead to opportunities for promotion, new =
+roles, or special recognition, but is not guaranteed to result in higher pa=
+y alone.</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>All&nbsp;</span><span>remuneration</span><span>&nbsp;decisi=
+ons are made transparently, with fairness and consistency as guiding princi=
+ples.</span></span><span>&nbsp;</span></li>
+</ul>
+<p><span><span>Be mindful that striving for higher ratings does not guarant=
+ee proportionally higher rewards, especially if resources are limited.</spa=
+n></span><span>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-CommitmenttoFa=
+irness"><span><span>Commitment to Fairness</span></span><span>&nbsp;</span>=
+</h2>
+<p><span><span>You can be confident that ratings will be applied fairly and=
+ consistently. The performance framework is designed to reflect actual cont=
+ributions, not subjective preferences. Leaders will use clear criteria, ope=
+n communication, and the Tech Capability Framework to guide assessments. If=
+ you have concerns,&nbsp;</span><span>you=E2=80=99re</span><span>&nbsp;enco=
+uraged to discuss them openly and seek support for your development.</span>=
+</span><span>&nbsp;</span></p>
+<h2 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Appendix"><spa=
+n><span>Appendix</span></span><span>&nbsp;</span></h2>
+<h3 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-ExampleGoals">=
+<span><span>Example Goals</span></span><span>&nbsp;</span></h3>
+<ul>
+<li><strong><span><span>3 - Solid Performance:</span></span></strong><span>=
+<span>&nbsp;=E2=80=9CMaintain zero critical incidents in database operation=
+s over the next 12 months.=E2=80=9D</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>Goal to Avoid 2/1:</span></span></strong><span><spa=
+n>&nbsp;=E2=80=9CAttend monthly team check-ins and proactively address feed=
+back to ensure continuous improvement.=E2=80=9D</span></span><span>&nbsp;</=
+span></li>
+</ul>
+<ul>
+<li><strong><span><span>4 - Above and Beyond:</span></span></strong><span><=
+span>&nbsp;=E2=80=9CLead the migration of legacy systems to cloud infrastru=
+cture, delivering project ahead of schedule.=E2=80=9D</span></span><span>&n=
+bsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>5 - Exceptional:</span></span></strong><span><span>=
+&nbsp;=E2=80=9CDevelop and launch a cross-departmental dashboard that impro=
+ves decision-making for three business units.=E2=80=9D</span></span><span>&=
+nbsp;</span></li>
+</ul>
+<h3 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-FAQ"><span><sp=
+an>FAQ</span></span><span>&nbsp;</span></h3>
+<ul>
+<li><strong><span><span>Q:</span></span></strong><span><span>&nbsp;What if&=
+nbsp;</span><span>I=E2=80=99m</span><span>&nbsp;unsure which rating my perf=
+ormance matches?</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>A:</span></span></strong><span><span>&nbsp;Refer to=
+ the framework descriptions, discuss with your leader, and use feedback fro=
+m check-ins.</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>Q:</span></span></strong><span><span>&nbsp;Can I ch=
+ange my goals during the year?</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>A:</span></span></strong><span><span>&nbsp;Yes. Goa=
+ls can be updated, archived, or added as priorities&nbsp;</span><span>evolv=
+e</span><span>.</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>Q:</span></span></strong><span><span>&nbsp;How does=
+ the Tech Capability Framework help?</span></span><span>&nbsp;</span></li>
+</ul>
+<ul>
+<li><strong><span><span>A:</span></span></strong><span><span>&nbsp;It clari=
+fies role expectations and helps you set development goals that build the r=
+ight capabilities.</span></span><span>&nbsp;</span></li>
+</ul>
+<h3 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Links&amp;Reso=
+urces"><span><span>Links &amp; Resources</span></span><span>&nbsp;</span></=
+h3>
+<ul>
+<li><span><span>Annual Performance &amp; Reward Review Page</span></span><s=
+pan>&nbsp;</span></li>
+</ul>
+<ul>
+<li><span><span>Contact: Workforce Capability &amp; Experience Manager for =
+Tech Capability Framework questions</span></span><span>&nbsp;</span></li>
+</ul>
+<h3 id=3D"ODSTeamPerformance&amp;GoalSettingFramework(DRAFT)-Conclusion"><s=
+pan><span>Conclusion</span></span><span>&nbsp;</span></h3>
+<p><span><span>This framework is your roadmap&nbsp;</span><span>for</span><=
+span>&nbsp;success. Set clear, motivating goals.&nbsp;</span><span>Aim</spa=
+n><span>&nbsp;for consistent&nbsp;</span><span>performance, and</span><span=
+>&nbsp;strive for growth when the time is right. Remember, your efforts are=
+ valued, and the rating system is designed to support your development and =
+reward your achievements fairly.&nbsp;</span><span>Let=E2=80=99s</span><spa=
+n>&nbsp;work together to achieve our collective ambition and make a positiv=
+e impact&nbsp;</span><span>as</span><span>&nbsp;</span><span>a team</span><=
+span>.</span></span><span>&nbsp;</span></p>
+    </div>
+</body>
+</html>
+------=_Part_713_1714288474.1761274637371--
