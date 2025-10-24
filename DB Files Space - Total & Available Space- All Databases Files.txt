@@ -1,0 +1,28 @@
+-- total space and available space for all databases Files
+SELECT f.database_id, f.name,
+       f.file_id,
+       volume_mount_point,
+       CAST(CAST(total_bytes as FLOAT)/1024/1024/1024 AS DECIMAL(10,2)) Total_GB,
+       CAST(CAST(available_bytes as FLOAT)/1024/1024/1024 AS DECIMAL(10,2)) Avaialble_GB
+FROM sys.master_files AS f
+CROSS APPLY sys.dm_os_volume_stats(f.database_id, f.file_id);
+-- CROSS APPLY sys.dm_os_volume_stats(DB_ID(), f.file_id); -- current Database
+
+
+-- List databases and Files and Size INfo
+SELECT 
+db.name as 'Database Name', 
+mf.name as 'Logical Name',
+mf.type_desc as 'File Type', 
+mf.physical_name as 'Physical File Path',
+CONVERT(DECIMAL(18,2), CAST(mf.size as BIGINT) *8.0/1024) AS 'Current Size (MB)',
+CASE
+	WHEN mf.max_size = -1 THEN 'UNLIMITED'
+	ELSE CONVERT(VARCHAR, CAST(mf.max_size as BIGINT)*8/1024) + 'MB'
+END AS 'Max Size',
+CASE
+	WHEN mf.is_percent_growth= 1 THEN CAST(mf.growth as VARCHAR) + '%'
+	ELSE CAST(CAST(mf.growth as BIGINT)*8/1024 as VARCHAR) + 'MB'
+END AS 'Growth'
+FROM sys.master_files mf JOIN sys.databases db ON db.database_id = mf.database_id
+ORDER BY db.name, mf.type_desc;

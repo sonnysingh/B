@@ -1,0 +1,16 @@
+
+-- Enable xp_cmdshell if not already
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'xp_cmdshell', 1;
+RECONFIGURE;
+
+-- Run certutil for Local machine certificates
+-- View Certificates in the LocalMachibe\my (Personal) store
+EXEC xp_cmdshell 'certutil -store My';
+
+-- Trusted Root Certifcation Authorties
+EXEC xp_cmdshell 'certutil -store "Root"';
+
+-- WebHosting 
+EXEC xp_cmdshell 'certutil -store "Webhosting"';

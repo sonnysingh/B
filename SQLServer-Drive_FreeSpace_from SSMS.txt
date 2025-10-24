@@ -1,0 +1,5 @@
+-- Only Free Space on Drives
+EXEC xp_fixeddrives;
+
+
+

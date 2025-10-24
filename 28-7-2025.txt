@@ -1,0 +1,90 @@
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+In Azure check if you can access \\SAUEAZFSQ01\bnz-dotnet-team, if you can then copy the back up there. Then on premise you can get the backup from \\SETTAZFSQ01\bnz-dotnet-team
+
+You could try below for Non-Prod
+ 
+On-Premise SMB Path: \\SETTAZFSQ01\bnz-dotnet-team
+Azure SMB Path: \\SAUEAZFSQ01\bnz-dotnet-team
+
+C-Admin Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -C
+Regular Account - A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+	
+You will need to request A_Azure_PreProd_FileSync - bnz-dotnet-team -S
+
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+
+INC006764033 - sauesapsmdbq01:Monitored Windows Service SERVICES_SQLAgent$SAP2019B on sauesapsmdbq01 has stopped.
+	- Investigation conducted and service running without any issue. refer attached screen shot.
+
+INC006764032 - sauesapsmdbq01:Monitored Windows Service SERVICES_MSSQL$SAP2019B on sauesapsmdbq01 has stopped
+	- Investigation conducted and service running without any issue. refer attached screen shot.
+
+INC006763730 - sauesapsqlq01:Drive C: has 9% space left
+	- 15.4 GB (12.22%) free space on the C drive (126 GB) . no action required at this stage.
+
+
+INC006802901 - sauessrsp01:Drive C: has 7% space left
+	- 14.68% (18.5 GB)  is free space on the C drive (out of 126 GB)
+
+https://jira.nz.thenational.com/browse/DASD-2537
+- Task 1 - backup the dev db “UPI” in sql server “saueessqd51” (it is in Azure) and restore it onto on premise sql server “swlgdmsqld01”. This allows us to develop and test the new report.
+	- Review the source and destnation server. Spce review. Backup DB.
+	- No access for shared drive. discuss with Anna and Deepa and then Li.Li shared the way network folders.
+	- Copy the backup of 8.5 GB and let Li know.
+	- But source and destination SQL Server are diff version, Destination (2014) is lower than Source (2019)
+	- discus with Li and She mentioned "Ah, right, right! Sorry, did not realised that. Hm, might be an  issue since our on premise sql servers are all 2014 except for the new ABS servers set up. The new ABS dev sql server is SWVDABSSQL01 which has sqlserver 2022 I think. If you restore the db there, you might need to create sql logins for those db users in UPI db, right?"
+
+
+
+- 'P' account. Email ask for update.
+
+[I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom
+Summary:  Request – IP Telephony – BNZIPTEL Portal Access Request for <user>
+Priority:  Low
+Reference Number:  INC000003999056]
+
+
+
+- DASD-2410 (ADM - Reporting) - 1.5 hrs
+	- Investigation conducted further
+
+- INC006771328 (sorbspsqlp01:Drive I: has 5% space left) - 1 hr
+Drive hosting Full and differential backups. Review and no possibility of removing files to retain the space. Currently drive have 1.06 TB (9.06% ) free space on the drive. No action taken at this stage.
+
+- INC006770591 (sorbspsqlp01:Drive L: has 7% space left ) - 1 hr
+- Drive hosting Full and differential backups. Review and no possibility of removing files to retain the space. Currently drive have 444 GB free space on the drive. No action taken at this stage
+
+- 
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		NOT On Call 	***********************
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+
+SLct6?5R0u1mVWFi$y
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+- Veeam Plugin and GMSA POC - .5 hr
+- ODM - SQL Server Disk Capacity and Pre - New Server Build tasks - .5 hr
+
+- DASD-2537 - discuss with team meeting
+
+- DASD-2525 (SAKLDMSQLQ01.bnznag.nz.thenational.com Certificate Expiring in 90 Days) - Discuss with Anna to show 'How To Do"
+	- Have spare time, just ping me to discuss 
+
+
+- 'P' account. I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom 
+
+
+
+- DASD-2410 ( ADM - Reporting - remove email Dan Park from ADM Merchant Job) - 2 hrs
+	- Discussed with Dan Park as he informed he has received the email with report file.
+	- Discusswed with Umesh and Ant in groupm chat with Dan and someone called 'SAM' looking into it.
+	- Details shared with Erica and ask to look into it. text shared with her
+		DASD2410 - Dan_Park@bnz.co.nz) is not member of distribution list - "BNZ_MerchantDT@bnz.co.nz" which is part of ADM report job. ADM had looked at and confirmed. Dan's email is not part of job anymore as I have removed 
+		last week no both AG servers. Tested as well and DAN didn't receive the test email. Are you able to see at your end unless I am missing something. just wondering why old ADM merchant report job enabled ? can this be 
+		disabled ? as this will resolve the issue.
+
+
+
+
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		On Call Start Today First Week	2nd DAY 	***********************
+
+CHG000803071 ( CTASK2526308 ( SQL Change ) - APEX -  CC/PL Auto decisioning Enhancement - 1.5 hrs
+	- Database Details: Host: DBLST-APEX-PROD | Database: Apex (production)
+	Backup the following table(s):
+ 	- dbo.dbo.brp_step
+ 	- dbo.decline_codes
+	Run the attached SQL
+DASD-2556 (FW: Change task CTASK2526308 has been assigned to group BNZ-Database Support-SQL) 
+
+CHG000784653 ( Patch SAP servers to implement PROD Windows and Linux Critical  Patches and Rotate CyberArk Passwords -July )
+Critical security patches will be installed on Windows servers. Linux servers will be updated with the latest yum package updates. Rotate CyberArk Passwords. - Deepa Jayapathy (BNZ-PlatformSupport-CloudSAP). - 1.5 hrs
+
+INC006769911 P3 ( sakldmsqlp01:Drive F: has 3% space left ) - 1 hr
+- (MaintenancePlan - Full Backups.Subplan_1 @ 7:00 pm every Thursday) - Full backup caused the alerts. 38 databases get backed up . Now  drive have 297 GB free space out of 1.17 TB.
+ 
+INC006770301 P3 (sorbspsqlp01:Drive Q: has 0% space left) - 1.5 hrs
+Work notes•17-07-2025 23:17:51
+The drive hosting SQL Server data files which is currently NOT at 0% rather around 8% (1.03 TB free space 13.0 TB). The min recommendation free space threshold , with available space now less than 10% of total 13.0 TB. Hence expansion of drive may required to do at least 10% of 13.0 TB free space.
+helpful Notes...
+The drive hosting SQL Server data files which is currently below the min  recommendation free space threshold , with available space now less than 10% of total 13.0 TB. As data growth continues and there is no viable option to offload or archive existing files,  require to expand the drive capacity to maintain operational stability and avoid databases performance degradation and unexpected failures.  Please expand the drive to lest 10% of 13.0 TB free space.
+
+
+INC006770791 (sorbspsqlp01:CPU Utilisation is at 100%) - 1 hr
+	- Resolved by itself at 18-07-2025 07:44:02 when CPU come inder threshold value.
+	- Root cause analysis the issue . The cause of high CPU utilization is Index query and Full Backup job.
+	- CPU utilisation on the server has been observed fluctuating floating between 58% to 88 %, indicating sustained and variable processing load.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

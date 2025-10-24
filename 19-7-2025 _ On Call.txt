@@ -1,0 +1,77 @@
+
+uS,XOM7p%-fvQw89GN
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+- Veeam Plugin and GMSA POC - .5 hr
+- ODM - SQL Server Disk Capacity and Pre - New Server Build tasks - .5 hr
+
+
+- 'P' account. I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom 
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		On Call Start Today First Week	2nd DAY 	***********************
+
+19 July 2025 - 19-07-2025 00:37:03
+INC006774117 P3 (sorbspsqlp01:CPU Utilisation is at 100%) - 1 hr
+- SQL server experienced 100% CPU utilization and the cause is executing INDEX command with extremely high CPU time and logical reads. Other contributing sessions include Select and Update and Delete commands from SQ Agent Jobs with moderate CPU and IO usage. The primary cause appears to be resource-intensive index maintenance. that seems executing from the host SETTSPWFEP06 , likely app server.
+- SQL Server and Veeam backup processes are jointly driving CPU to 100%.
+- Review Index Maintenance timing vs Veeam backup overlap and see the possibility of avoiding overlapping.
+
+
+19 July 2025 - 19-07-2025 15:59:34
+INC006775377 P3 - ( swvpabssql01:DYNATRACE [CRITICAL]: P-250712012 (BNZSQL) -Multiple infrastructure problems) - 19-07-2025 15:59:34 - 2 hrs
+Investigation conducted. root cause is change CHG000802591 and it's DBA tasks performed by DBA Anna [CTASK2524294 - DBA task - setting up new SQL ABS database and ABSArchive database ] @ 18-07-2025 18:00:00 - Runsheet task 2 and 3. 
+CTASK2524358 - change db recovery mode and backup db and  set up new archive configuration in db  - task 27 & 28 - 20-07-2025 08:00:00
+	- 
+System
+Work notes•19-07-2025 15:59:34
+OPEN Problem P-250712012 in environment Production Environment<br><br>Problem detected at: 03:54 (UTC) 19.07.2025<br><br>1 impacted infrastructure component<br><br>Host<br><br>SWVPABSSQL01.BNZNAG.NZ.THENATIONAL.com<br><br>critical:low_diskspace:F:\:SWVPABSSQL01.BNZNAG.NZ.THENATIONAL.com<br><br>The F:\ Disk available % space free value is below threshold 5 %. Currently 1.93 %<br><br>low_disk: critical<br><br>warning:low_diskspace:F:\:SWVPABSSQL01.BNZNAG.NZ.THENATIONAL.com<br><br>The F:\ Disk available % space free value is below threshold 10 %. Currently 1.93 %<br><br>Root cause<br><br>Based on our dependency analysis all incidents are part of the same overall problem.<br><br><a href="https://skl01780.live.dynatrace.com/#problems/problemdetails;pid=3173938087214501830_1752897060000V2" target="_blank">https://skl01780.live.dynatrace.com/#problems/problemdetails;pid=3173938087214501830_1752897060000V2</a>
+
+
+
+20 July 2025 - 20-07-2025 07:51:37
+INC006777456 - (swvpabssql01:DYNATRACE [CRITICAL]: P-250712394 (BNZSQL) -Multiple infrastructure problems) - 1 hr
+Major alert [Alert9672228], created on CI: [swvpabssql01]. Metric name is [SS:BNZSQL-critical:8349407185024173570_1752954180000V2] of type [AVAILABILITY] from data source [BNZ TrueSight].Total impacted services by the CI: [swvpabssql01] is 1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

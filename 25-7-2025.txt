@@ -1,0 +1,55 @@
+
+
+
+\\saueazfsq01\bnz-datamanagement-team\Source
+\\bnznag.nz.thenational.com\dfslocation\ApplicationSource\DataManagement\DBAShare
+Azure - \\SAUEAZFSP01\bnz-tas-team
+OnPremise - \\SORBAZFSP01\bnz-tas-team
+
+On call number (04) 924 9350
+
+
+
+- MS SQL DBA team meetup - .5 hr
+	- discuss Azure SQL seerver access thru Azure Jump Box access denied
+	- email removing Jira task of Dan Park
+	- discuss access of SAUESTDBP01
+	- Discuss Change Task 
+- ODS - Stand up - .5 hr
+
+- Investigation of SQL DBa Team shared email "bnz_mssql_support@bnz.co.nz". no email received. 
+- Check with Anna and she advised "We talked about this a while ago. We had permissions and we don't anymore so you will need to talk to David about it."	
+- same request to Eduard to check at his end if he can.
+- Requested to David @ 41:16 Pm (NZT) - Hi David, I think I am not member of SQL DBA shared email "bnz_mssql_support@bnz.co.nz" ? are you able to check if this is the case ? I am not receiving the emails.
+
+- 
+
+- 'P' account. I needed for login Cisco Call forwarding APP "https://bnzbctcmp01.uc.nz.thenational.com/ucmuser/j_security_check"
+	- Contact channel "Domain Services" and they recommend to contact IAM 
+	- Receive reply from IAM ("bnz_identity_access_management@bnz.co.nz") and asking for why needed - CC'd Camilla and David
+	- Provide details to Renee Tuohyfrom 
+
+- DASD-2410 (ADM - Reporting) - 1.5 hrs
+	- Investigation conducted further
+
+- INC006771328 (sorbspsqlp01:Drive I: has 5% space left) - 1 hr
+Drive hosting Full and differential backups. Review and no possibility of removing files to retain the space. Currently drive have 1.06 TB (9.06% ) free space on the drive. No action taken at this stage.
+
+- INC006770591 (sorbspsqlp01:Drive L: has 7% space left ) - 1 hr
+- Drive hosting Full and differential backups. Review and no possibility of removing files to retain the space. Currently drive have 444 GB free space on the drive. No action taken at this stage
+
+- 
+
+
+
+- ** - https://jira.nz.thenational.com/browse/ODS-676 - Build a Test Environment for Cluster scripts+ ** - Ask Anna for shadow view to learn.
+
+
+
+***************		NOT On Call 	***********************
+
+
+
+
+
+

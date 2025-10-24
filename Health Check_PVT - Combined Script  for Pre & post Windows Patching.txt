@@ -1,0 +1,225 @@
+-- Combined Script - Health Check(PVT) for Pre & post Windows Patching
+
+
+
+-- Create temp table to hold all health check results
+IF OBJECT_ID('tempdb..#HealthCheckReport') IS NOT NULL DROP TABLE #HealthCheckReport;
+
+CREATE TABLE #HealthCheckReport (
+    CheckArea NVARCHAR(100),
+    Details NVARCHAR(MAX),
+    Status NVARCHAR(20),
+    Timestamp DATETIME
+);
+-- 1. SQL Server Name
+DECLARE @SERVERNAME NVARCHAR(128),
+	@InstanceName NVARCHAR(128),
+	@FulServerName NVARCHAR(256),
+	@SqlVersion NVARCHAR(MAX);
+
+-- Assign Values
+SELECT 
+@SERVERNAME = CAST(SERVERPROPERTY('MachineName') AS NVARCHAR(128)),
+@InstanceName = CAST(SERVERPROPERTY('InstanceName') AS NVARCHAR(128)),
+@SqlVersion = CAST(@@VERSION AS NVARCHAR(MAX));
+
+-- Compose Full Server Name
+SET @FulServerName = @SERVERNAME + 
+	CASE WHEN @InstanceName IS NULL THEN''
+		ELSE '\' + @InstanceName
+	END;
+
+-- Insert into #HealthCheckReport
+INSERT INTO #HealthCheckReport (CheckArea, Details, Status, Timestamp)
+VALUES ('SQL NAME & Version INFO',
+		'SERVER Name:' + @FulServerName + CHAR(13) + '----- SQL VERSION:' + @SqlVersion,
+	'Passed',
+	GETDATE()
+);
+-- 1. SQL Server Version
+INSERT INTO #HealthCheckReport
+-- (CheckArea, Details, Status, Timestamp)
+SELECT 
+    'SQL Version',
+    'Version: ' +
+    CASE 
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 2) = '16' THEN 'SQL Server 2022'
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 2) = '15' THEN 'SQL Server 2019'
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 2) = '14' THEN 'SQL Server 2017'
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 2) = '13' THEN 'SQL Server 2016'
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 2) = '12' THEN 'SQL Server 2014'
+        WHEN LEFT(CONVERT(VARCHAR, SERVERPROPERTY('ProductVersion')), 3) = '10.' THEN 'SQL Server 2008 or 2008 R2'
+        ELSE 'Unknown Version'
+    END +
+	' -- Build: ' + ISNULL(CONVERT(VARCHAR(50), SERVERPROPERTY('ProductVersion')), 'N/A') +
+	' -- Edition: ' + ISNULL(CONVERT(VARCHAR(100), SERVERPROPERTY('Edition')), 'N/A') +
+    ' -- Level: ' + ISNULL(CONVERT(VARCHAR(50), SERVERPROPERTY('ProductLevel')), 'N/A') +
+    ' -- CU: ' + ISNULL(CONVERT(VARCHAR(50), SERVERPROPERTY('ProductUpdateLevel')), 'N/A') +
+    ' -- Ref: ' + ISNULL(CONVERT(VARCHAR(50), SERVERPROPERTY('ProductUpdateReference')), 'N/A'),
+    'OK',
+    GETDATE();
+
+
+-- 2. Service Info
+INSERT INTO #HealthCheckReport
+SELECT 'SQL Services',
+       'Use sys.dm_server_services for service status',
+       'Check manually',
+       GETDATE();
+
+-- 3. Database Status
+INSERT INTO #HealthCheckReport
+SELECT 'Database Status',
+       CONCAT('DB: ', name, ', State: ', state_desc),
+       CASE WHEN state_desc = 'ONLINE' THEN 'OK' ELSE 'Critical' END,
+       GETDATE()
+FROM sys.databases;
+
+
+-- 4. Backup Status (Full backups only)
+INSERT INTO #HealthCheckReport
+SELECT 'Backup Status',
+       CONCAT('DB: ', d.name, ', Last Full Backup: ', CONVERT(VARCHAR, MAX(b.backup_finish_date), 120)),
+       CASE WHEN MAX(b.backup_finish_date) >= GETDATE() - 1 THEN 'OK' ELSE 'Warning' END,
+       GETDATE()
+FROM msdb.dbo.backupset b
+JOIN sys.databases d ON b.database_name = d.name
+WHERE b.type = 'D'
+GROUP BY d.name;
+
+
+-- 3. Availability Group Health
+INSERT INTO #HealthCheckReport
+SELECT 'AG Health',
+       CONCAT('AG: ', ag.name, ', DB: ', DB_NAME(drs.database_id), ', Replica: ', ar.replica_server_name,
+              ', Role: ', rs.role_desc, ', Sync: ', drs.synchronization_state_desc, ', Health: ', drs.synchronization_health_desc),
+       CASE WHEN drs.synchronization_state_desc = 'SYNCHRONIZED' THEN 'OK' ELSE 'Warning' END,
+       GETDATE()
+FROM sys.availability_groups ag
+JOIN sys.availability_replicas ar ON ag.group_id = ar.group_id
+JOIN sys.dm_hadr_availability_replica_states rs ON ar.replica_id = rs.replica_id
+JOIN sys.dm_hadr_database_replica_states drs ON rs.replica_id = drs.replica_id;
+
+
+-- 6. Failed Jobs
+/*
+INSERT INTO #HealthCheckReport
+SELECT TOP 5 'Failed Jobs',
+       CONCAT('Job: ', j.name, ', Msg: ', h.message),
+       'Failed',
+       GETDATE()
+FROM msdb.dbo.sysjobhistory h
+JOIN msdb.dbo.sysjobs j ON h.job_id = j.job_id
+WHERE h.run_status <> 1
+  AND h.run_date >= CONVERT(INT, CONVERT(VARCHAR(8), GETDATE(), 112))
+ORDER BY h.run_date DESC, h.run_time DESC;
+*/
+
+INSERT INTO #HealthCheckReport
+SELECT TOP 5 
+    'Failed Jobs',
+    CONCAT(
+        'Job: ', j.name,
+        ', RunTime: ',
+        CONVERT(DATETIME, 
+            STUFF(STUFF(CAST(h.run_date AS CHAR(8)), 5, 0, '-'), 8, 0, '-') 
+            + ' ' + 
+            STUFF(STUFF(RIGHT('000000' + CAST(h.run_time AS VARCHAR(6)), 6), 3, 0, ':'), 6, 0, ':')
+        ),
+        ', Msg: ', h.message
+    ),
+    'Failed',
+    GETDATE()
+FROM msdb.dbo.sysjobhistory h
+JOIN msdb.dbo.sysjobs j ON h.job_id = j.job_id
+WHERE h.run_status <> 1
+  AND h.run_date >= CONVERT(INT, CONVERT(VARCHAR(8), GETDATE(), 112))
+ORDER BY h.run_date DESC, h.run_time DESC
+
+-- Successful jobs
+INSERT INTO #HealthCheckReport
+SELECT TOP 5 'Successfull Jobs',
+       CONCAT(
+        'Job: ', j.name,
+        ', RunTime: ',
+        CONVERT(DATETIME, 
+            STUFF(STUFF(CAST(h.run_date AS CHAR(8)), 5, 0, '-'), 8, 0, '-') 
+            + ' ' + 
+            STUFF(STUFF(RIGHT('000000' + CAST(h.run_time AS VARCHAR(6)), 6), 3, 0, ':'), 6, 0, ':')
+        ),
+        ', Msg: ', h.message
+    ),
+       'Successfull',
+       GETDATE()
+FROM msdb.dbo.sysjobhistory h
+JOIN msdb.dbo.sysjobs j ON h.job_id = j.job_id
+WHERE h.run_status = 1
+  AND h.run_date >= CONVERT(INT, CONVERT(VARCHAR(8), GETDATE(), 112))
+ORDER BY h.run_date DESC, h.run_time DESC;
+
+
+-- 5. Error Logs (last 10 lines) - Simplified to avoid version issues
+DECLARE @ErrorLogs TABLE (
+    LogDate DATETIME,
+    ProcessInfo NVARCHAR(255),
+    [Text] NVARCHAR(MAX)
+);
+
+-- Using the 4-parameter version to avoid syntax issues
+INSERT INTO @ErrorLogs
+EXEC xp_readerrorlog 0, 1, NULL, NULL;
+
+-- Insert top 10 recent messages into report
+INSERT INTO #HealthCheckReport
+SELECT TOP 10 'Error Log',
+       [Text],
+       CASE 
+           WHEN [Text] LIKE '%error%' OR [Text] LIKE '%fail%' OR [Text] LIKE '%severity%' THEN 'Warning' 
+           ELSE 'OK' 
+       END,
+       GETDATE()
+FROM @ErrorLogs
+ORDER BY LogDate DESC;
+
+
+-- 7. Wait Stats
+INSERT INTO #HealthCheckReport
+SELECT TOP 5 'Wait Stats',
+       CONCAT('Wait: ', wait_type, ', Time: ', wait_time_ms, 'ms'),
+       'Check',
+       GETDATE()
+FROM sys.dm_os_wait_stats
+WHERE wait_type NOT IN (
+    'CLR_SEMAPHORE','LAZYWRITER_SLEEP','RESOURCE_QUEUE','SLEEP_TASK','SLEEP_SYSTEMTASK',
+    'SQLTRACE_BUFFER_FLUSH','WAITFOR','LOGMGR_QUEUE','CHECKPOINT_QUEUE','REQUEST_FOR_DEADLOCK_SEARCH',
+    'XE_TIMER_EVENT','BROKER_TO_FLUSH','BROKER_TASK_STOP','CLR_MANUAL_EVENT','CLR_AUTO_EVENT',
+    'DISPATCHER_QUEUE_SEMAPHORE','FT_IFTS_SCHEDULER_IDLE_WAIT','XE_DISPATCHER_WAIT',
+    'XE_DISPATCHER_JOIN','SQLTRACE_INCREMENTAL_FLUSH_SLEEP','DIRTY_PAGE_POLL'
+)
+ORDER BY wait_time_ms DESC;
+
+
+-- 9. Disk Space (xp_fixeddrives)
+DECLARE @drives TABLE (drive CHAR(1), free_mb INT);
+
+INSERT INTO @drives
+EXEC xp_fixeddrives;
+
+INSERT INTO #HealthCheckReport
+SELECT 'Disk Space',
+       CONCAT(drive, ': ', free_mb, ' MB free'),
+       CASE WHEN free_mb < 2048 THEN 'Warning' ELSE 'OK' END,
+       GETDATE()
+FROM @drives;
+
+-- 10. Disabled Logins
+INSERT INTO #HealthCheckReport
+SELECT 'Login Check',
+       CONCAT('Disabled login: ', name),
+       'Warning',
+       GETDATE()
+FROM sys.sql_logins
+WHERE is_disabled = 1;
+
+-- Final Output
+SELECT * FROM #HealthCheckReport --ORDER BY CheckArea, Timestamp;
